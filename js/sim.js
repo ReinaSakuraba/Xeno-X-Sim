@@ -1,5 +1,12 @@
-$(document).ready(function() {
+$(function() {
     simulator.init();
+    $("#class-selector").change(function() {
+        simulator.changeClass($(this).val());
+    });
+
+    $("#level-selector").change(function() {
+        simulator.changeLevel($(this).val());
+    });
 });
 
 
@@ -8,9 +15,9 @@ var simulator = {
     currentLevel: 60,
 
     init: function() {
-        var self = this;
-
         $("#class-selector").html("");
+        $("#level-selector").html("");
+
         for (var c in classes) {
             if (classes.hasOwnProperty(c)) {
                 var name = classes[c].name;
@@ -21,56 +28,24 @@ var simulator = {
             }
         }
 
-        $("#class-selector").change(function() {
-            self.changeClass($("#class-selector").val());
-        });
+        var levelRange = Array.from({length: 60}, (v, i) => i + 1);
+        for (var i of levelRange) {
+            $("#level-selector").append('<option value"' + i + '">' + i + ' </option>');
+        }
 
+        $("#class-selector").val(this.currentClass);
+        $("#level-selector").val(this.currentLevel);
         this.setStats(this.currentClass, this.currentLevel);
-
-        $("#level-selector").change(function() {
-            self.changeLevel($("#level-selector").val());
-        });
     },
 
-    setStats: function(c, level) {
-        var base;
-        var thing;
-        var stats = ["hp", "rangedAccuracy", "meleeAccuracy", "rangedAttack", "meleeAttack", "evasion", "potential"];
-        for (var stat of stats) {
-            switch (stat) {
-                case "hp":
-                    base = 99.48 * level + 150.52;
-                    thing = "hp";
-                    break;
-                case "rangedAccuracy":
-                    base = 2.593 * level + 103.407;
-                    thing = "racc";
-                    break;
-                case "meleeAccuracy":
-                    base = 2.72 * level + 101.28;
-                    thing = "macc";
-                    break;
-                case "rangedAttack":
-                    base = 0.67 * level + 13.33;
-                    thing = "ratk";
-                    break;
-                case "meleeAttack":
-                    base = 1.035 * level + 17.01;
-                    thing = "matk";
-                    break;
-                case "evasion":
-                    base = 1.735 * level + 8.265;
-                    thing = "eva";
-                    break;
-                case "potential":
-                    base = 0.92 * level + 9.08;
-                    thing = "pot";
+    setStats: function(className, level) {
+        for(var stat in stats) {
+            if (stats.hasOwnProperty(stat)) {
+                var base = Math.floor(stats[stat].multiplier * level + stats[stat].multiplier);
+                var final = Math.floor(classes[className][stat] * base);
+                $("#stat-" + stats[stat].short).html(final);
             }
-
-            var final = Math.floor(classes[c][stat] * Math.floor(base));
-            $("#stat-" + thing).html(final);
         }
-        $("#stat-tp").html(3000);
     },
 
     changeClass: function(className) {
