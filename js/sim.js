@@ -42,7 +42,7 @@ var simulator = {
         for(var stat in stats) {
             if (stats.hasOwnProperty(stat)) {
                 var base = Math.floor(stats[stat].multiplier * level + stats[stat].base);
-                var final = Math.floor(classes[className][stat] * base);
+                var final = (stat != "tp" ? Math.floor(classes[className][stat] * base) : base);
                 $("#stat-" + stats[stat].short).html(final);
             }
         }
