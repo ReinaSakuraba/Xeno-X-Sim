@@ -41,7 +41,7 @@ var simulator = {
     setStats: function(className, level) {
         for(var stat in stats) {
             if (stats.hasOwnProperty(stat)) {
-                var base = Math.floor(stats[stat].multiplier * level + stats[stat].multiplier);
+                var base = Math.floor(stats[stat].multiplier * level + stats[stat].base);
                 var final = Math.floor(classes[className][stat] * base);
                 $("#stat-" + stats[stat].short).html(final);
             }
