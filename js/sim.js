@@ -33,13 +33,24 @@ var simulator = {
             $("#level-selector").append('<option value"' + i + '">' + i + ' </option>');
         }
 
+        var skillLevelRange = Array.from({length: 5}, (v, i) => i + 1);
+        var frag = "";
+        for (var i of skillLevelRange) {
+            frag += '<option value="' + i +'">' + i + '</option>';
+        }
+
+        for (var i of skillLevelRange) {
+            $("#skill-" + i + "-level").html(frag);
+        }
+
         $("#class-selector").val(this.currentClass);
         $("#level-selector").val(this.currentLevel);
         this.setStats(this.currentClass, this.currentLevel);
+        this.setSkills(this.currentClass);
     },
 
     setStats: function(className, level) {
-        for(var stat in stats) {
+        for (var stat in stats) {
             if (stats.hasOwnProperty(stat)) {
                 var base = Math.floor(stats[stat].multiplier * level + stats[stat].base);
                 var final = (stat != "tp" ? Math.floor(classes[className][stat] * base) : base);
@@ -48,9 +59,21 @@ var simulator = {
         }
     },
 
+    setSkills: function(className) {
+        var validSkills = classes[className].skills || skills;
+        var skillRange = Array.from({length: 5}, (v, i) => i + 1);
+        for (var i of skillRange) {
+            $("#skill-" + i).html('<option value="None">None</option>');
+            for (var skill in validSkills) {
+                $("#skill-" + i).append('<option value="' + skill + '">' + skills[skill].name + '</option>');
+            }
+        }
+    },
+
     changeClass: function(className) {
         this.currentClass = className;
         this.setStats(this.currentClass, this.currentLevel);
+        this.setSkills(this.currentClass);
     },
 
     changeLevel: function(level) {

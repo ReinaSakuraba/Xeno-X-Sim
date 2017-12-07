@@ -1,10 +1,12 @@
-<html>
+<html lamg="en">
 <head>
+    <meta charset="utf-8">
     <title>Xenoblade Chronicles X Damage Calculator</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/classes.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
+    <script type="text/javascript" src="js/skills.js"></script>
     <script type="text/javascript" src="js/sim.js"></script>
 </head>
 <body>
@@ -36,6 +38,39 @@
                 <td id="stat-matk">N/A</td>
                 <td id="stat-eva">N/A</td>
                 <td id="stat-pot">N/A</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <tbody>
+            <tr>
+                <th>Skill 1</th>
+                <th>Skill 2</th>
+                <th>Skill 3</th>
+                <th>Skill 4</th>
+                <th>Skill 5</th>
+            </tr>
+            <tr>
+                <td>
+                    <select id="skill-1-level"><option value="None">None</option></select>
+                    <select id="skill-1"><option value="None">None</option></select>
+                </td>
+                <td>
+                    <select id="skill-2-level"><option value="None">None</option></select>
+                    <select id="skill-2"><option value="None">None</option></select>
+                </td>
+                <td>
+                    <select id="skill-3-level"><option value="None">None</option></select>
+                    <select id="skill-3"><option value="None">None</option></select>
+                </td>
+                <td>
+                    <select id="skill-4-level"><option value="None">None</option></select>
+                    <select id="skill-4"><option value="None">None</option></select>
+                </td>
+                <td>
+                    <select id="skill-5-level"><option value="None">None</option></select>
+                    <select id="skill-5"><option value="None">None</option></select>
+                </td>
             </tr>
         </tbody>
     </table>
