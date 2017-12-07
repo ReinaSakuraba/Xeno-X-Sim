@@ -287,7 +287,7 @@ var classes = {
             healingTouch: 11,
             highTension: 13,
             beautySleep: 15,
-            kingsDecreee: 16,
+            kingsDecree: 16,
             unpleasantDream: 17,
             kingsBoon: 18
         }
@@ -704,7 +704,7 @@ var classes = {
             buffHeal: 9,
             wellWeathered: 11,
             mechanoidSlayer: 13,
-            kingsDecreee: 14,
+            kingsDecree: 14,
             knightsSoul: 15,
             supremeSword: 16,
             tpOverdrive: 17
@@ -781,7 +781,7 @@ var classes = {
             steelFlesh: 7,
             mightyMuscle: 9,
             combatPresence: 11,
-            toppleTopper: 13,
+            toppleToppler: 13,
             shieldScreen: 14,
             longTopple: 15,
             traumaTension: 16,
@@ -823,7 +823,7 @@ var classes = {
             mechanoidSlayer: 13,
             knightsSoul: 14,
             supremeSword: 15,
-            secondarySpeed: 16,
+            secondaryAccelerator: 16,
             synchrony: 17
         }
     },
