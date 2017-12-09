@@ -38,15 +38,12 @@ var simulator = {
         $("#level-selector").html("");
         $(".skill-level-selector").html("");
 
-        for (var c in classes) {
-            if (classes.hasOwnProperty(c)) {
-                var name = classes[c].name;
-                if (name == "Elma") {
-                    $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
-                }
-                $("#class-selector").append(`<option value="${c}">${name}</option>`);
+        Object.entries(classes).forEach(([key, value]) => {
+            if (value.name == "Elma") {
+                $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
             }
-        }
+            $("#class-selector").append(`<option value="${key}">${value.name}</option>`);
+        });
 
         for (var i of range(1, 60)) {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
@@ -63,21 +60,19 @@ var simulator = {
     },
 
     setStats: function(className, level) {
-        for (var stat in stats) {
-            if (stats.hasOwnProperty(stat)) {
-                var base = Math.floor(stats[stat].multiplier * level + stats[stat].base);
-                var final = (stat != "tp" ? Math.floor(classes[className][stat] * base) : base);
-                $(`#stat-${stats[stat].short}`).html(final);
-            }
-        }
+        Object.entries(stats).forEach(([key, value]) => {
+            var base = Math.floor(value.multiplier * level + value.base);
+            var final = (key != "tp" ? Math.floor(classes[className][key] * base) : base);
+            $(`#stat-${value.short}`).html(final);
+        });
     },
 
     setSkills: function(className) {
         var validSkills = classes[className].skills || skills;
         $(".skill-selector").html('<option value="None">None</option>');
-        for (var skill in validSkills) {
-            $(".skill-selector").append(`<option value="${skill}">${skills[skill].name}</option>`);
-        }
+        Object.entries(validSkills).forEach(([key, value]) => {
+            $(".skill-selector").append(`<option value="${key}">${value.name}</option>`);
+        });
     },
 
     changeClass: function(className) {
