@@ -1,3 +1,22 @@
+function range(start, stop, step) {
+    if (typeof(stop) == "undefined") {
+        stop = start;
+        start = 0;
+    }
+
+    if (typeof(step) == "undefined") {
+        step = 1;
+    }
+
+    var result = [];
+    for (var i = start; step > 0 ? i <= stop : i >= stop; i += step) {
+        result.push(i);
+    }
+
+    return result;
+}
+
+
 $(function() {
     simulator.init();
     $("#class-selector").change(function() {
@@ -28,18 +47,16 @@ var simulator = {
             }
         }
 
-        var levelRange = Array.from({length: 60}, (v, i) => i + 1);
-        for (var i of levelRange) {
+        for (var i of range(1, 60)) {
             $("#level-selector").append('<option value"' + i + '">' + i + ' </option>');
         }
 
-        var skillLevelRange = Array.from({length: 5}, (v, i) => i + 1);
         var frag = "";
-        for (var i of skillLevelRange) {
+        for (var i of range(1, 5)) {
             frag += '<option value="' + i +'">' + i + '</option>';
         }
 
-        for (var i of skillLevelRange) {
+        for (var i of range(1, 5)) {
             $("#skill-" + i + "-level").html(frag);
         }
 
@@ -61,8 +78,7 @@ var simulator = {
 
     setSkills: function(className) {
         var validSkills = classes[className].skills || skills;
-        var skillRange = Array.from({length: 5}, (v, i) => i + 1);
-        for (var i of skillRange) {
+        for (var i of range(1, 5)) {
             $("#skill-" + i).html('<option value="None">None</option>');
             for (var skill in validSkills) {
                 $("#skill-" + i).append('<option value="' + skill + '">' + skills[skill].name + '</option>');
