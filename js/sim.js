@@ -36,6 +36,7 @@ var simulator = {
     init: function() {
         $("#class-selector").html("");
         $("#level-selector").html("");
+        $(".skill-level-selector").html("");
 
         for (var c in classes) {
             if (classes.hasOwnProperty(c)) {
@@ -51,13 +52,8 @@ var simulator = {
             $("#level-selector").append('<option value"' + i + '">' + i + ' </option>');
         }
 
-        var frag = "";
         for (var i of range(1, 5)) {
-            frag += '<option value="' + i +'">' + i + '</option>';
-        }
-
-        for (var i of range(1, 5)) {
-            $("#skill-" + i + "-level").html(frag);
+            $(".skill-level-selector").append('<option value="' + i +'">' + i + '</option>');
         }
 
         $("#class-selector").val(this.currentClass);
@@ -78,11 +74,9 @@ var simulator = {
 
     setSkills: function(className) {
         var validSkills = classes[className].skills || skills;
-        for (var i of range(1, 5)) {
-            $("#skill-" + i).html('<option value="None">None</option>');
-            for (var skill in validSkills) {
-                $("#skill-" + i).append('<option value="' + skill + '">' + skills[skill].name + '</option>');
-            }
+        $(".skill-selector").html('<option value="None">None</option>');
+        for (var skill in validSkills) {
+            $(".skill-selector").append('<option value="' + skill + '">' + skills[skill].name + '</option>');
         }
     },
 
