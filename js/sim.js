@@ -44,16 +44,16 @@ var simulator = {
                 if (name == "Elma") {
                     $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
                 }
-                $("#class-selector").append('<option value="' + c + '">' + name + ' </option>');
+                $("#class-selector").append(`<option value="${c}">${name}</option>`);
             }
         }
 
         for (var i of range(1, 60)) {
-            $("#level-selector").append('<option value"' + i + '">' + i + ' </option>');
+            $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
         for (var i of range(1, 5)) {
-            $(".skill-level-selector").append('<option value="' + i +'">' + i + '</option>');
+            $(".skill-level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
         $("#class-selector").val(this.currentClass);
@@ -67,7 +67,7 @@ var simulator = {
             if (stats.hasOwnProperty(stat)) {
                 var base = Math.floor(stats[stat].multiplier * level + stats[stat].base);
                 var final = (stat != "tp" ? Math.floor(classes[className][stat] * base) : base);
-                $("#stat-" + stats[stat].short).html(final);
+                $(`#stat-${stats[stat].short}`).html(final);
             }
         }
     },
@@ -76,7 +76,7 @@ var simulator = {
         var validSkills = classes[className].skills || skills;
         $(".skill-selector").html('<option value="None">None</option>');
         for (var skill in validSkills) {
-            $(".skill-selector").append('<option value="' + skill + '">' + skills[skill].name + '</option>');
+            $(".skill-selector").append(`<option value="${skill}">${skills[skill].name}</option>`);
         }
     },
 
