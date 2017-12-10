@@ -72,28 +72,30 @@ var simulator = {
         Object.entries(stats).forEach(([stat, value]) => {
             var statBase = Math.floor(value.multiplier * level + value.base);
             var classBase = Math.floor((classes[className][stat] || 1) * statBase);
+            var skillBonus = 0;
             this.currentSkills.forEach((value, key) => {
                 switch (`${value} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
                     case "boostBullets | rangedAttack":
-                        classBase *= (1.05 + 0.05 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.05 + 0.05 * $(`#skill-${key}-level`).val());
                         break;
                     case "fortifiedFlesh | hp":
-                        classBase *= (1.025 + 0.05 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.25 + 0.05 * $(`#skill-${key}-level`).val());
                         break;
                     case "mindscape | tp":
                     case "highTension | tp":
                     case "knightsSoul | tp":
-                        classBase += (250 + 250 * $(`#skill-${key}-level`).val());
+                        skillBonus += 250 + 250 * $(`#skill-${key}-level`).val();
                         break;
                     case "steadyHand | rangedAccuracy":
                     case "unwaveringCourage | meleeAccuracy":
                     case "innerSearch | potential":
-                        classBase *= (1.1 + 0.02 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.1 + 0.02 * $(`#skill-${key}-level`).val());
                 }
             });
-            $(`#stat-${value.short}`).html(Math.floor(classBase));
+            var finalStats = Math.floor(classBase + skillBonus);
+            $(`#stat-${value.short}`).html(finalStats);
         });
     },
 
