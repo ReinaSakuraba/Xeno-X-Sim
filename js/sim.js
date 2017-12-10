@@ -105,8 +105,8 @@ var simulator = {
         $(".skill-selector").html('<option value="None">None</option>');
         this.currentSkills.clear();
         $(".skill-level-selector").val("1");
-        Object.entries(validSkills).forEach(([key, value]) => {
-            $(".skill-selector").append(`<option value="${key}">${value.name}</option>`);
+        Object.keys(validSkills).forEach((key) => {
+            $(".skill-selector").append(`<option value="${key}">${skills[key].name}</option>`);
         });
     },
 
