@@ -1,11 +1,7 @@
-function range(start, stop, step) {
-    if (typeof(stop) == "undefined") {
+function range(start, stop, step=1) {
+    if (stop === undefined) {
         stop = start;
-        start = 0;
-    }
-
-    if (typeof(step) == "undefined") {
-        step = 1;
+        start = 1;
     }
 
     var result = [];
@@ -54,11 +50,11 @@ var simulator = {
             $("#class-selector").append(`<option value="${key}">${value.name}</option>`);
         });
 
-        for (var i of range(1, 60)) {
+        for (var i of range(60)) {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
-        for (var i of range(1, 5)) {
+        for (var i of range(5)) {
             $(".skill-level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
