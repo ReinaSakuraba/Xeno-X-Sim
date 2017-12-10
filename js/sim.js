@@ -74,24 +74,25 @@ var simulator = {
             var classBase = Math.floor((classes[className][stat] || 1) * statBase);
             var skillBonus = 0;
             this.currentSkills.forEach((value, key) => {
+                var skillLevel = $(`#skill-level-selector-${key}`).val();
                 switch (`${value} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
                     case "boostBullets | rangedAttack":
-                        skillBonus += classBase * (0.05 + 0.05 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.05 + 0.05 * skillLevel);
                         break;
                     case "fortifiedFlesh | hp":
-                        skillBonus += classBase * (0.25 + 0.05 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.25 + 0.05 * skillLevel);
                         break;
                     case "mindscape | tp":
                     case "highTension | tp":
                     case "knightsSoul | tp":
-                        skillBonus += 250 + 250 * $(`#skill-${key}-level`).val();
+                        skillBonus += 250 + 250 * skillLevel;
                         break;
                     case "steadyHand | rangedAccuracy":
                     case "unwaveringCourage | meleeAccuracy":
                     case "innerSearch | potential":
-                        skillBonus += classBase * (0.1 + 0.02 * $(`#skill-${key}-level`).val());
+                        skillBonus += classBase * (0.1 + 0.02 * skillLevel);
                 }
             });
             var finalStats = Math.floor(classBase + skillBonus);
@@ -124,7 +125,7 @@ var simulator = {
         $(`.skill-selector option[value=${this.currentSkills.get(skillPosition)}]`).removeAttr("disabled");
         this.currentSkills.set(skillPosition, skillName);
         if (skillName != "None") {
-            $(`.skill-selector:not(#skill-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
+            $(`.skill-selector:not(#skill-selector-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
         }
         this.setStats(this.currentClass, this.currentLevel);
     }
