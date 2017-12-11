@@ -102,7 +102,7 @@ var simulator = {
         $(".skill-selector,.skill-level-selector").removeAttr("disabled");
         this.currentSkills.clear();
         $(".skill-level-selector").val("1");
-        var ignored = Array.from(range(classes[className].skillSlots, 5), (v, i) => `.skill-${v + 1}`).join(",");
+        var ignored = range(classes[className].skillSlots, 5).map((v, i) => `.skill-${v + 1}`).join(",");
         $(ignored).attr("disabled", "disabled");
         Object.keys(validSkills).forEach((key) => {
             $(`.skill-selector:not(${ignored})`).append(`<option value="${key}">${skills[key].name}</option>`);
