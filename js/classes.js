@@ -137,7 +137,7 @@ var classes = {
         hp: 1.0,
         rangedAccuracy: 1.2,
         meleeAccuracy: 1.2,
-        rangedAttack:1.15 ,
+        rangedAttack: 1.15,
         meleeAttack: 1.0,
         evasion: 1.4,
         potential: 1.1
@@ -581,7 +581,7 @@ var classes = {
             dispel: 7,
             gravityCloak: 8,
             energySource: 9,
-            beamBarrage: 10,
+            beamBomber: 10,
             blackButterfly: 11,
             pathogenBlast: 12,
             gravityBlast: 13
