@@ -39,4 +39,4 @@ var stats = {
         multiplier: 0.92,
         short: "pot"
     }
-}
+};
