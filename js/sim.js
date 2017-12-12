@@ -99,7 +99,7 @@ var simulator = {
     setSkills: function(className) {
         var validSkills = classes[className].skills || skills;
         $(".skill-selector").html('<option value="None">None</option>');
-        $(".skill-selector,.skill-level-selector").removeAttr("disabled");
+        $(".skill-selector,.skill-level-selector,th").removeAttr("disabled");
         this.currentSkills.clear();
         $(".skill-level-selector").val("1");
         var ignored = range(classes[className].skillSlots, 5).map((v, i) => `.skill-${v + 1}`).join(",");
