@@ -177,6 +177,7 @@ var classes = {
     },
     elma: {
         name: "Elma",
+        class: "Full Metal Jaguar",
         skillSlots: 4,
         hp: 1.15,
         rangedAccuracy: 1.15,
@@ -216,6 +217,7 @@ var classes = {
     },
     lin: {
         name: "Lin",
+        class: "Shield Trooper",
         skillSlots: 3,
         hp: 1.4,
         rangedAccuracy: 1.0,
@@ -255,6 +257,7 @@ var classes = {
     },
     irina: {
         name: "Irina",
+        class: "Psycorrupter+",
         skillSlots: 4,
         hp: 0.8,
         rangedAccuracy: 1.1,
@@ -294,6 +297,7 @@ var classes = {
     },
     gwin: {
         name: "Gwin",
+        class: "Samurai Gunner",
         skillSlots: 3,
         hp: 1.2,
         rangedAccuracy: 1.1,
@@ -333,6 +337,7 @@ var classes = {
     },
     doug: {
         name: "Doug",
+        class: "Blast Fencer+",
         skillSlots: 4,
         hp: 1.1,
         rangedAccuracy: 1.0,
@@ -372,6 +377,7 @@ var classes = {
     },
     lao: {
         name: "Lao",
+        class: "Partisan Eagle",
         skillSlots: 4,
         hp: 1.2,
         rangedAccuracy: 1.1,
@@ -410,6 +416,7 @@ var classes = {
     },
     l: {
         name: "L",
+        class: "Shield Trooper+",
         skillSlots: 3,
         hp: 1.4,
         rangedAccuracy: 1.0,
@@ -449,6 +456,7 @@ var classes = {
     },
     murderess: {
         name: "Murderess",
+        class: "Winged Viper+",
         skillSlots: 3,
         hp: 0.95,
         rangedAccuracy: 1.0,
@@ -486,6 +494,7 @@ var classes = {
     },
     phog: {
         name: "Phog",
+        class: "Winged Viper",
         skillSlots: 3,
         hp: 0.95,
         rangedAccuracy: 1.15,
@@ -525,6 +534,7 @@ var classes = {
     },
     frye: {
         name: "Frye",
+        class: "Samurai Gunner+",
         skillSlots: 3,
         hp: 1.2,
         rangedAccuracy: 1.1,
@@ -562,6 +572,7 @@ var classes = {
     },
     mia: {
         name: "Mia",
+        class: "Psycorrupter+",
         skillSlots: 3,
         hp: 0.8,
         rangedAccuracy: 1.1,
@@ -599,6 +610,7 @@ var classes = {
     },
     celica: {
         name: "Celica",
+        class: "Psycorrupter+",
         skillSlots: 3,
         hp: 0.8,
         rangedAccuracy: 1.1,
@@ -638,6 +650,7 @@ var classes = {
     },
     nagi: {
         name: "Nagi",
+        class: "Duelist+",
         skillSlots: 5,
         hp: 1.25,
         rangedAccuracy: 1.0,
@@ -675,6 +688,7 @@ var classes = {
     },
     hope: {
         name: "Hope",
+        class: "Psycorrupter+",
         skillSlots: 3,
         hp: 0.8,
         rangedAccuracy: 1.0,
@@ -712,6 +726,7 @@ var classes = {
     },
     alexa: {
         name: "Alexa",
+        class: "Partisan Eagle+",
         skillSlots: 3,
         hp: 1.0,
         rangedAccuracy: 1.1,
@@ -751,6 +766,7 @@ var classes = {
     },
     hb: {
         name: "H.B.",
+        class: "Shield Trooper+",
         skillSlots: 4,
         hp: 1.4,
         rangedAccuracy: 1.0,
@@ -790,6 +806,7 @@ var classes = {
     },
     yelv: {
         name: "Yelv",
+        class: "Blast Fencer+",
         skillSlots: 3,
         hp: 1.1,
         rangedAccuracy: 1.0,
@@ -829,6 +846,7 @@ var classes = {
     },
     boze: {
         name: "Boze",
+        class: "Partisan Eagle",
         skillSlots: 3,
         hp: 1.0,
         rangedAccuracy: 1.1,
