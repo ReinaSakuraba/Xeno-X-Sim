@@ -127,5 +127,20 @@ var simulator = {
             $(`.skill-selector:not(#skill-selector-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
         }
         this.setStats(this.currentClass, this.currentLevel);
+    },
+
+    createSkillNode: function(skill, skillData) {
+        var node = `
+            <div class="skill-node">
+                <div class="top">
+                    <img src="images/skills/${skills[skill].name}.png">
+                    ${skills[skill].name}
+                    <br />
+                    Learned: ${skillData.class || classes[skillData].class + " " + value}
+                </div>
+                Description: ${skills[skill].effect}
+            </div>
+        `
+        return node;
     }
 }
