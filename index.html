@@ -11,69 +11,73 @@
     <script type="text/javascript" src="js/sim.js"></script>
 </head>
 <body>
-    <table>
-        <tbody>
-            <tr>
-                <th colspan="8">Base Stats</th>
-            </tr>
-            <tr>
-                <th colspan="4">Class: <select id="class-selector"><option value="None">None</option></select></th>
-                <th colspan="4">Level: <select id="level-selector"><option value="None">None</option></select></th>
-            </tr>
-            <tr>
-                <th>HP</th>
-                <th>TP</th>
-                <th>R-Acc</th>
-                <th>M-Acc</th>
-                <th>R-Atk</th>
-                <th>M-Atk</th>
-                <th>Eva</th>
-                <th>Pot</th>
-            </tr>
-            <tr>
-                <td id="stat-hp">N/A</td>
-                <td id="stat-tp">N/A</td>
-                <td id="stat-racc">N/A</td>
-                <td id="stat-macc">N/A</td>
-                <td id="stat-ratk">N/A</td>
-                <td id="stat-matk">N/A</td>
-                <td id="stat-eva">N/A</td>
-                <td id="stat-pot">N/A</td>
-            </tr>
-        </tbody>
-    </table>
-    <table>
-        <tbody>
-            <tr>
-                <th class="skill-1">Skill 1</th>
-                <th class="skill-2">Skill 2</th>
-                <th class="skill-3">Skill 3</th>
-                <th class="skill-4">Skill 4</th>
-                <th class="skill-5">Skill 5</th>
-            </tr>
-            <tr>
-                <td>
-                    <select id="skill-level-selector-1" class="skill-level-selector skill-1"><option value="None">None</option></select>
-                    <select id="skill-selector-1" class="skill-selector skill-1"><option value="None">None</option></select>
-                </td>
-                <td>
-                    <select id="skill-level-selector-2" class="skill-level-selector skill-2"><option value="None">None</option></select>
-                    <select id="skill-selector-2" class="skill-selector skill-2"><option value="None">None</option></select>
-                </td>
-                <td>
-                    <select id="skill-level-selector-3" class="skill-level-selector skill-3"><option value="None">None</option></select>
-                    <select id="skill-selector-3" class="skill-selector skill-3"><option value="None">None</option></select>
-                </td>
-                <td>
-                    <select id="skill-level-selector-4" class="skill-level-selector skill-4"><option value="None">None</option></select>
-                    <select id="skill-selector-4" class="skill-selector skill-4"><option value="None">None</option></select>
-                </td>
-                <td>
-                    <select id="skill-level-selector-5" class="skill-level-selector skill-5"><option value="None">None</option></select>
-                    <select id="skill-selector-5" class="skill-selector skill-5"><option value="None">None</option></select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="stats">
+        <table>
+            <tbody>
+                <tr>
+                    <th colspan="8">Base Stats</th>
+                </tr>
+                <tr>
+                    <th colspan="4">Class: <select id="class-selector"><option value="None">None</option></select></th>
+                    <th colspan="4">Level: <select id="level-selector"><option value="None">None</option></select></th>
+                </tr>
+                <tr>
+                    <th>HP</th>
+                    <th>TP</th>
+                    <th>R-Acc</th>
+                    <th>M-Acc</th>
+                    <th>R-Atk</th>
+                    <th>M-Atk</th>
+                    <th>Eva</th>
+                    <th>Pot</th>
+                </tr>
+                <tr>
+                    <td id="stat-hp">N/A</td>
+                    <td id="stat-tp">N/A</td>
+                    <td id="stat-racc">N/A</td>
+                    <td id="stat-macc">N/A</td>
+                    <td id="stat-ratk">N/A</td>
+                    <td id="stat-matk">N/A</td>
+                    <td id="stat-eva">N/A</td>
+                    <td id="stat-pot">N/A</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="skills">
+        <table>
+            <tbody>
+                <tr>
+                    <th class="skill-1">Skill 1</th>
+                    <th class="skill-2">Skill 2</th>
+                    <th class="skill-3">Skill 3</th>
+                    <th class="skill-4">Skill 4</th>
+                    <th class="skill-5">Skill 5</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="skill-level-selector-1" class="skill-level-selector skill-1"><option value="None">None</option></select>
+                        <select id="skill-selector-1" class="skill-selector skill-1"><option value="None">None</option></select>
+                    </td>
+                    <td>
+                        <select id="skill-level-selector-2" class="skill-level-selector skill-2"><option value="None">None</option></select>
+                        <select id="skill-selector-2" class="skill-selector skill-2"><option value="None">None</option></select>
+                    </td>
+                    <td>
+                        <select id="skill-level-selector-3" class="skill-level-selector skill-3"><option value="None">None</option></select>
+                        <select id="skill-selector-3" class="skill-selector skill-3"><option value="None">None</option></select>
+                    </td>
+                    <td>
+                        <select id="skill-level-selector-4" class="skill-level-selector skill-4"><option value="None">None</option></select>
+                        <select id="skill-selector-4" class="skill-selector skill-4"><option value="None">None</option></select>
+                    </td>
+                    <td>
+                        <select id="skill-level-selector-5" class="skill-level-selector skill-5"><option value="None">None</option></select>
+                        <select id="skill-selector-5" class="skill-selector skill-5"><option value="None">None</option></select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
