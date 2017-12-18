@@ -104,8 +104,9 @@ var simulator = {
         $(".skill-level-selector").val("1");
         var ignored = range(classes[className].skillSlots, 5).map((v, i) => `.skill-${v + 1}`).join(",");
         $(ignored).attr("disabled", "disabled");
-        Object.keys(validSkills).forEach((key) => {
+        Object.entries(validSkills).forEach(([key, value]) => {
             $(`.skill-selector:not(${ignored})`).append(`<option value="${key}">${skills[key].name}</option>`);
+            $('#skills').append(this.createSkillNode(key, value, className));
         });
     },
 
@@ -129,14 +130,14 @@ var simulator = {
         this.setStats(this.currentClass, this.currentLevel);
     },
 
-    createSkillNode: function(skill, skillData) {
+    createSkillNode: function(skill, skillData, className) {
         var node = `
             <div class="skill-node">
                 <div class="top">
                     <img src="images/skills/${skills[skill].name}.png">
                     ${skills[skill].name}
                     <br />
-                    Learned: ${skillData.class || classes[skillData].class + " " + value}
+                    Learned: ${skillData.class || classes[className].class + " " + skillData}
                 </div>
                 Description: ${skills[skill].effect}
             </div>
