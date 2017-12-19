@@ -74,7 +74,7 @@ var simulator = {
                 switch (`${value} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
-                    case "boostBullets | rangedAttack":
+                    case "boostedBullets | rangedAttack":
                         skillBonus += classBase * (0.05 + 0.05 * skillLevel);
                         break;
                     case "fortifiedFlesh | hp":
