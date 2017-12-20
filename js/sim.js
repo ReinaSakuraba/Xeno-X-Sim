@@ -28,7 +28,7 @@ $(function() {
     });
 
     $(".skill-level-selector").change(function() {
-        simulator.setStats(simulator.currentClass, simulator.currentLevel);
+        simulator.changeSkillLevel($(this).val(), $(this).attr("id").slice(-1));
     });
 });
 
@@ -37,6 +37,7 @@ var simulator = {
     currentClass: "drifter",
     currentLevel: 60,
     currentSkills: new Map(),
+    skillLevels: new Map(),
 
     init: function() {
         $("#class-selector").html("");
@@ -48,6 +49,10 @@ var simulator = {
                 $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
             }
             $("#class-selector").append(`<option value="${key}">${value.name}</option>`);
+        });
+
+        Object.keys(skills).forEach(key => {
+            this.skillLevels.set(key, 1);
         });
 
         for (var i of range(60)) {
@@ -70,7 +75,7 @@ var simulator = {
             var classBase = Math.floor((classes[className][stat] || 1) * statBase);
             var skillBonus = 0;
             this.currentSkills.forEach((value, key) => {
-                var skillLevel = $(`#skill-level-selector-${key}`).val();
+                var skillLevel = this.skillLevels.get(value);
                 switch (`${value} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
@@ -127,6 +132,12 @@ var simulator = {
         if (skillName != "None") {
             $(`.skill-selector:not(#skill-selector-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
         }
+        this.setStats(this.currentClass, this.currentLevel);
+    },
+
+    changeSkillLevel: function(skillLevel, skillPosition) {
+        var skillName = this.currentSkills.get(skillPosition);
+        this.skillLevels.set(skillName, skillLevel);
         this.setStats(this.currentClass, this.currentLevel);
     },
 
