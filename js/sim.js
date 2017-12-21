@@ -111,7 +111,6 @@ var simulator = {
         $(ignored).attr("disabled", "disabled");
         Object.entries(validSkills).forEach(([key, value]) => {
             $(`.skill-selector:not(${ignored})`).append(`<option value="${key}">${skills[key].name}</option>`);
-            $('#skills').append(this.createSkillNode(key, value, className));
         });
     },
 
