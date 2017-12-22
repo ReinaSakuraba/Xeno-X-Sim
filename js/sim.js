@@ -129,6 +129,7 @@ var simulator = {
         $(`.skill-selector option[value=${this.currentSkills.get(skillPosition)}]`).removeAttr("disabled");
         this.currentSkills.set(skillPosition, skillName);
         if (skillName != "None") {
+            $(`#skill-level-selector-${skillPosition}`).val(this.skillLevels.get(skillName));
             $(`.skill-selector:not(#skill-selector-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
         }
         this.setStats(this.currentClass, this.currentLevel);
