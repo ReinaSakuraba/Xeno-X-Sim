@@ -22,27 +22,18 @@ $(function() {
     $("#level-selector").change(function() {
         simulator.changeLevel($(this).val());
     });
-
-    $(".skill-selector").change(function() {
-        simulator.changeSkill($(this).val(), $(this).attr("id").slice(-1));
-    });
-
-    $(".skill-level-selector").change(function() {
-        simulator.changeSkillLevel($(this).val(), $(this).attr("id").slice(-1));
-    });
 });
 
 
 var simulator = {
     currentClass: "drifter",
     currentLevel: 60,
-    currentSkills: new Map(),
+    currentSkills: new Set(),
     skillLevels: new Map(),
 
     init: function() {
         $("#class-selector").html("");
         $("#level-selector").html("");
-        $(".skill-level-selector").html("");
 
         Object.entries(classes).forEach(([key, value]) => {
             if (value.name == "Elma") {
@@ -59,10 +50,6 @@ var simulator = {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
-        for (var i of range(5)) {
-            $(".skill-level-selector").append(`<option value"${i}">${i}</option>`);
-        }
-
         $("#class-selector").val(this.currentClass);
         $("#level-selector").val(this.currentLevel);
         this.setStats(this.currentClass, this.currentLevel);
@@ -74,9 +61,9 @@ var simulator = {
             var statBase = Math.floor(value.multiplier * level + value.base);
             var classBase = Math.floor((classes[className][stat] || 1) * statBase);
             var skillBonus = 0;
-            this.currentSkills.forEach((value, key) => {
-                var skillLevel = this.skillLevels.get(value);
-                switch (`${value} | ${stat}`) {
+            this.currentSkills.forEach(key => {
+                var skillLevel = this.skillLevels.get(key);
+                switch (`${key} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
                     case "boostedBullets | rangedAttack":
@@ -103,14 +90,29 @@ var simulator = {
 
     setSkills: function(className) {
         var validSkills = classes[className].skills || skills;
-        $(".skill-selector").html('<option value="None">None</option>');
-        $(".skill-selector,.skill-level-selector,th").removeAttr("disabled");
+        $("#skill-selector").html("");
+        $("#skills").html("");
         this.currentSkills.clear();
-        $(".skill-level-selector").val("1");
-        var ignored = range(classes[className].skillSlots, 5).map((v, i) => `.skill-${v + 1}`).join(",");
-        $(ignored).attr("disabled", "disabled");
         Object.entries(validSkills).forEach(([key, value]) => {
-            $(`.skill-selector:not(${ignored})`).append(`<option value="${key}">${skills[key].name}</option>`);
+            $('#skill-selector').append(this.createSkillNode(key, value, className));
+        });
+
+        $(".skill-node").click(function() {
+            simulator.changeSkill($(this).attr("id"));
+        });
+
+        for (var i of range(classes[this.currentClass].skillSlots)) {
+            $("#skills").append(`<img height="80" width="80" border="1px solid black">`);
+        }
+
+        $("#skills").append(`<input type="submit" value="Edit Arts">`);
+        $("#skills input").click(function() {
+            $("#skill-layer").removeClass("hidden");
+            $("body").append(`<div class="mask"></div>`);
+            $(".mask").click(function() {
+                $("#skill-layer").addClass("hidden");
+                $(".mask").remove();
+            });
         });
     },
 
@@ -125,25 +127,34 @@ var simulator = {
         this.setStats(this.currentClass, this.currentLevel);
     },
 
-    changeSkill: function(skillName, skillPosition) {
-        $(`.skill-selector option[value=${this.currentSkills.get(skillPosition)}]`).removeAttr("disabled");
-        this.currentSkills.set(skillPosition, skillName);
-        if (skillName != "None") {
-            $(`#skill-level-selector-${skillPosition}`).val(this.skillLevels.get(skillName));
-            $(`.skill-selector:not(#skill-selector-${skillPosition}) option[value=${skillName}]`).attr("disabled", "disabled");
+    changeSkill: function(skillName) {
+        var node = $(`#${skillName}`)
+        if (this.currentSkills.has(skillName)) {
+            node.removeClass("selected");
+            this.currentSkills.delete(skillName);
+        } else if (this.currentSkills.size < classes[this.currentClass].skillSlots) {
+            node.addClass("selected");
+            this.currentSkills.add(skillName);
         }
+
+        $("#skills img").attr("src", "");
+        var i = 0;
+        this.currentSkills.forEach(key => {
+            $("#skills img")[i].src = `images/skills/${skills[key].name}.png`;
+            i += 1
+        });
+
         this.setStats(this.currentClass, this.currentLevel);
     },
 
-    changeSkillLevel: function(skillLevel, skillPosition) {
-        var skillName = this.currentSkills.get(skillPosition);
+    changeSkillLevel: function(skillName, skillLevel) {
         this.skillLevels.set(skillName, skillLevel);
         this.setStats(this.currentClass, this.currentLevel);
     },
 
     createSkillNode: function(skill, skillData, className) {
         var node = `
-            <div class="skill-node">
+            <div class="skill-node" id="${skill}">
                 <div class="top">
                     <img src="images/skills/${skills[skill].name}.png">
                     ${skills[skill].name}
