@@ -105,7 +105,7 @@ var simulator = {
             $("#skills").append(`<img height="80" width="80" border="1px solid black">`);
         }
 
-        $("#skills").append(`<input type="submit" value="Edit Arts">`);
+        $("#skills").append(`<input type="submit" value="Edit Skills">`);
         $("#skills input").click(function() {
             $("#skill-layer").removeClass("hidden");
             $("body").append(`<div class="mask"></div>`);
