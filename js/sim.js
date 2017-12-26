@@ -154,7 +154,7 @@ var simulator = {
 
     createSkillNode: function(skill, skillData, className) {
         var node = `
-            <div class="skill-node" id="${skill}">
+            <div class="skill-node no-highlight" id="${skill}">
                 <div class="top">
                     <img src="images/skills/${skills[skill].name}.png">
                     ${skills[skill].name}
