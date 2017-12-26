@@ -52,14 +52,14 @@ var simulator = {
 
         $("#class-selector").val(this.currentClass);
         $("#level-selector").val(this.currentLevel);
-        this.setStats(this.currentClass, this.currentLevel);
+        this.updateStats();
         this.setSkills(this.currentClass);
     },
 
-    setStats: function(className, level) {
+    updateStats: function() {
         Object.entries(stats).forEach(([stat, value]) => {
-            var statBase = Math.floor(value.multiplier * level + value.base);
-            var classBase = Math.floor((classes[className][stat] || 1) * statBase);
+            var statBase = Math.floor(value.multiplier * this.currentLevel + value.base);
+            var classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
             var skillBonus = 0;
             this.currentSkills.forEach(key => {
                 var skillLevel = this.skillLevels.get(key);
@@ -119,12 +119,12 @@ var simulator = {
     changeClass: function(className) {
         this.currentClass = className;
         this.setSkills(this.currentClass);
-        this.setStats(this.currentClass, this.currentLevel);
+        this.updateStats();
     },
 
     changeLevel: function(level) {
         this.currentLevel = level;
-        this.setStats(this.currentClass, this.currentLevel);
+        this.updateStats();
     },
 
     changeSkill: function(skillName) {
@@ -144,12 +144,12 @@ var simulator = {
             i += 1
         });
 
-        this.setStats(this.currentClass, this.currentLevel);
+        this.updateStats();
     },
 
     changeSkillLevel: function(skillName, skillLevel) {
         this.skillLevels.set(skillName, skillLevel);
-        this.setStats(this.currentClass, this.currentLevel);
+        this.updateStats();
     },
 
     createSkillNode: function(skill, skillData, className) {
