@@ -92,6 +92,7 @@ var simulator = {
         var validSkills = classes[className].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
+        $(".skill-level-node").attr("style", "");
         this.currentSkills.clear();
         Object.entries(validSkills).forEach(([key, value]) => {
             $('#skill-selector').append(this.createSkillNode(key, value, className));
@@ -153,10 +154,15 @@ var simulator = {
         }
 
         $("#skills img").attr("src", "");
+        $("#skills img").attr("class", "");
+        $(".skill-level-node").attr("style", "");
         var i = 0;
         this.currentSkills.forEach(key => {
             $("#skills img")[i].src = `images/skills/${skills[key].name}.png`;
             $($("#skills img")[i]).addClass(key);
+            for (var ii of range(this.skillLevels.get(key))) {
+                $($($(`.skill-levels`)[i]).find(".skill-level-node")[ii-1]).attr("style", "background-color: #0000FF;");
+            }
             i += 1
         });
 
