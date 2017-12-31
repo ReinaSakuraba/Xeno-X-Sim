@@ -47,10 +47,26 @@
     margin: 1px;
 }
 
-.skill-node .top{
+.skill-node .top {
     display: flex;
 }
 
-.skill-node.selected{
+.skill-node.selected {
     background-color: #777777;
+}
+
+#skills {
+    display: flex;
+}
+
+.skill-levels {
+    display: flex;
+    flex-wrap: wrap;
+    width: 82px;
+}
+
+.skill-level-node {
+    width: calc(72px / 5);
+    height: calc(72px / 5);
+    border: 1px solid #777777;
 }

@@ -102,8 +102,23 @@ var simulator = {
         });
 
         for (var i of range(classes[this.currentClass].skillSlots)) {
-            $("#skills").append(`<img height="80" width="80" border="1px solid black">`);
+            $("#skills").append(`<div class="skill-levels"><img height="80" width="80" border="1px solid black"></div>`);
         }
+
+        for (var i of range(5)) {
+            $(".skill-levels").append(`<div class="skill-level-node skill-level-node-${i}"></div>`);
+        }
+
+        $(".skill-level-node").click(function() {
+            var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
+            var skillName = $(this).parent().find("img").attr("class");
+            simulator.skillLevels.set(skillName, newLevel);
+            $(this).parent().find("div").attr("style", "");
+            for (i in range(newLevel)) {
+                $($(this).parent().find("div")[i]).attr("style", "background-color: #0000FF;");
+            }
+            simulator.updateStats();
+        });
 
         $("#skills").append(`<input type="submit" value="Edit Skills">`);
         $("#skills input").click(function() {
@@ -141,6 +156,7 @@ var simulator = {
         var i = 0;
         this.currentSkills.forEach(key => {
             $("#skills img")[i].src = `images/skills/${skills[key].name}.png`;
+            $($("#skills img")[i]).addClass(key);
             i += 1
         });
 
