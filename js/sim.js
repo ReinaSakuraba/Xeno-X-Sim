@@ -113,6 +113,7 @@ var simulator = {
         $(".skill-level-node").click(function() {
             var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
             var skillName = $(this).parent().find("img").attr("class");
+            if (skillName === undefined || skillName == "") return;
             simulator.skillLevels.set(skillName, newLevel);
             $(this).parent().find("div").attr("style", "");
             for (i in range(newLevel)) {
