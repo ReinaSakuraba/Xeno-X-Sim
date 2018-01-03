@@ -169,7 +169,7 @@ var simulator = {
         $(this).parent().find(".skill-level-node").attr("style", "");
 
         for (i in range(newLevel)) {
-            $($(this).parent().find("div")[i]).attr("style", "background-color: #0000FF;");
+            $($(this).parent().find(".skill-level-node")[i]).attr("style", "background-color: #0000FF;");
         }
 
         simulator.skillLevels.set(skillName, newLevel);
