@@ -110,17 +110,7 @@ var simulator = {
             $(".skill-levels").append(`<div class="skill-level-node skill-level-node-${i}"></div>`);
         }
 
-        $(".skill-level-node").click(function() {
-            var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
-            var skillName = $(this).parent().find("img").attr("class");
-            if (skillName === undefined || skillName == "") return;
-            simulator.skillLevels.set(skillName, newLevel);
-            $(this).parent().find("div").attr("style", "");
-            for (i in range(newLevel)) {
-                $($(this).parent().find("div")[i]).attr("style", "background-color: #0000FF;");
-            }
-            simulator.updateStats();
-        });
+        $(".skill-level-node").click(this.changeSkillLevel);
 
         $("#skills").append(`<input type="submit" value="Edit Skills">`);
         $("#skills input").click(function() {
@@ -170,9 +160,20 @@ var simulator = {
         this.updateStats();
     },
 
-    changeSkillLevel: function(skillName, skillLevel) {
-        this.skillLevels.set(skillName, skillLevel);
-        this.updateStats();
+    changeSkillLevel: function() {
+        var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
+        var skillName = $(this).parent().find("img").attr("class");
+
+        if (skillName === undefined || skillName == "") return;
+
+        $(this).parent().find(".skill-level-node").attr("style", "");
+
+        for (i in range(newLevel)) {
+            $($(this).parent().find("div")[i]).attr("style", "background-color: #0000FF;");
+        }
+
+        simulator.skillLevels.set(skillName, newLevel);
+        simulator.updateStats();
     },
 
     createSkillNode: function(skill, skillData, className) {
