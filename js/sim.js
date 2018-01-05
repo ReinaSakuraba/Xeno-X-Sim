@@ -110,7 +110,22 @@ var simulator = {
             $(".skill-levels").append(`<div class="skill-level-node skill-level-node-${i}"></div>`);
         }
 
-        $(".skill-level-node").click(this.changeSkillLevel);
+        $(".skill-level-node").click(function() {
+            var skillName = $(this).parent().find("img").attr("class");
+            if (!skillName) return;
+
+            var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
+            simulator.changeSkillLevel(skillName, newLevel);
+        });
+
+        $(".skill-levels").on("mousewheel", function(event) {
+            var skillName = $(this).find("img").attr("class");
+            if (!skillName) return;
+
+            var oldLevel = simulator.skillLevels.get(skillName);
+            var newLevel = event.originalEvent.wheelDeltaY > 0 ? oldLevel + 1 : oldLevel - 1;
+            simulator.changeSkillLevel(skillName, newLevel);
+        });
 
         $("#skills").append(`<input type="submit" value="Edit Skills">`);
         $("#skills input").click(function() {
@@ -160,20 +175,17 @@ var simulator = {
         this.updateStats();
     },
 
-    changeSkillLevel: function() {
-        var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
-        var skillName = $(this).parent().find("img").attr("class");
+    changeSkillLevel: function(skillName, skillLevel) {
+        if (skillLevel > 5 || skillLevel < 1) return;
 
-        if (skillName === undefined || skillName == "") return;
+        $(`.${skillName}`).parent().find(".skill-level-node").attr("style", "");
 
-        $(this).parent().find(".skill-level-node").attr("style", "");
-
-        for (i in range(newLevel)) {
-            $($(this).parent().find(".skill-level-node")[i]).attr("style", "background-color: #0000FF;");
+        for (i in range(skillLevel)) {
+            $($(`.${skillName}`).parent().find(".skill-level-node")[i]).attr("style", "background-color: #0000FF;");
         }
 
-        simulator.skillLevels.set(skillName, newLevel);
-        simulator.updateStats();
+        this.skillLevels.set(skillName, skillLevel);
+        this.updateStats();
     },
 
     createSkillNode: function(skill, skillData, className) {
