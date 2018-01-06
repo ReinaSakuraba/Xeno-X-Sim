@@ -92,7 +92,7 @@ var simulator = {
         var validSkills = classes[className].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
-        $(".skill-level-node").attr("style", "");
+        $(".skill-level-node").css("background", "");
         this.currentSkills.clear();
         Object.entries(validSkills).forEach(([key, value]) => {
             $('#skill-selector').append(this.createSkillNode(key, value, className));
@@ -161,7 +161,7 @@ var simulator = {
 
         $("#skills img").attr("src", "");
         $("#skills img").attr("class", "");
-        $(".skill-level-node").attr("style", "");
+        $(".skill-level-node").css("background-color", "");
 
         var i = 0;
         this.currentSkills.forEach(key => {
@@ -169,7 +169,7 @@ var simulator = {
             $($("#skills img")[i]).addClass(key);
 
             var skillLevel = this.skillLevels.get(key);
-            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).attr("style", "background-color: #0000FF;");
+            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF;");
 
             i += 1
         });
@@ -182,8 +182,8 @@ var simulator = {
 
         var skillLevelNodes = $(`.${skillName}`).parent().find(".skill-level-node");
 
-        skillLevelNodes.attr("style", "");
-        skillLevelNodes.slice(0, skillLevel).attr("style", "background-color: #0000FF;");
+        skillLevelNodes.css("background-color", "");
+        skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF;");
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
