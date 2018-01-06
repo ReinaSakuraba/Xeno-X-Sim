@@ -162,13 +162,15 @@ var simulator = {
         $("#skills img").attr("src", "");
         $("#skills img").attr("class", "");
         $(".skill-level-node").attr("style", "");
+
         var i = 0;
         this.currentSkills.forEach(key => {
             $("#skills img")[i].src = `images/skills/${skills[key].name}.png`;
             $($("#skills img")[i]).addClass(key);
-            for (var ii of range(this.skillLevels.get(key))) {
-                $($($(`.skill-levels`)[i]).find(".skill-level-node")[ii-1]).attr("style", "background-color: #0000FF;");
-            }
+
+            var skillLevel = this.skillLevels.get(key);
+            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).attr("style", "background-color: #0000FF;");
+
             i += 1
         });
 
@@ -178,11 +180,10 @@ var simulator = {
     changeSkillLevel: function(skillName, skillLevel) {
         if (skillLevel > 5 || skillLevel < 1) return;
 
-        $(`.${skillName}`).parent().find(".skill-level-node").attr("style", "");
+        var skillLevelNodes = $(`.${skillName}`).parent().find(".skill-level-node");
 
-        for (i in range(skillLevel)) {
-            $($(`.${skillName}`).parent().find(".skill-level-node")[i]).attr("style", "background-color: #0000FF;");
-        }
+        skillLevelNodes.attr("style", "");
+        skillLevelNodes.slice(0, skillLevel).attr("style", "background-color: #0000FF;");
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
