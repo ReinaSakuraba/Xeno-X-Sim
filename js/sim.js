@@ -61,28 +61,34 @@ var simulator = {
             var statBase = Math.floor(value.multiplier * this.currentLevel + value.base);
             var classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
             var skillBonus = 0;
+
             this.currentSkills.forEach(key => {
                 var skillLevel = this.skillLevels.get(key);
+
                 switch (`${key} | ${stat}`) {
                     case "steelFlesh | hp":
                     case "mightyMuscle | meleeAttack":
                     case "boostedBullets | rangedAttack":
                         skillBonus += classBase * (0.05 + 0.05 * skillLevel);
                         break;
+
                     case "fortifiedFlesh | hp":
                         skillBonus += classBase * (0.25 + 0.05 * skillLevel);
                         break;
+
                     case "mindscape | tp":
                     case "highTension | tp":
                     case "knightsSoul | tp":
                         skillBonus += 250 + 250 * skillLevel;
                         break;
+
                     case "steadyHand | rangedAccuracy":
                     case "unwaveringCourage | meleeAccuracy":
                     case "innerSearch | potential":
                         skillBonus += classBase * (0.1 + 0.02 * skillLevel);
                 }
             });
+
             var finalStats = Math.floor(classBase + skillBonus);
             $(`#stat-${value.short}`).html(finalStats);
         });
@@ -92,8 +98,8 @@ var simulator = {
         var validSkills = classes[className].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
-        $(".skill-level-node").css("background", "");
         this.currentSkills.clear();
+
         Object.entries(validSkills).forEach(([key, value]) => {
             $('#skill-selector').append(this.createSkillNode(key, value, className));
         });
@@ -109,6 +115,8 @@ var simulator = {
         for (var i of range(5)) {
             $(".skill-levels").append(`<div class="skill-level-node skill-level-node-${i}"></div>`);
         }
+
+        $("#skills").append(`<input type="submit" value="Edit Skills">`);
 
         $(".skill-level-node").click(function() {
             var skillName = $(this).parent().find("img").attr("class");
@@ -127,10 +135,10 @@ var simulator = {
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
-        $("#skills").append(`<input type="submit" value="Edit Skills">`);
         $("#skills input").click(function() {
             $("#skill-layer").removeClass("hidden");
             $("body").append(`<div class="mask"></div>`);
+
             $(".mask").click(function() {
                 $("#skill-layer").addClass("hidden");
                 $(".mask").remove();
@@ -151,6 +159,7 @@ var simulator = {
 
     changeSkill: function(skillName) {
         var node = $(`#${skillName}`)
+
         if (this.currentSkills.has(skillName)) {
             node.removeClass("selected");
             this.currentSkills.delete(skillName);
