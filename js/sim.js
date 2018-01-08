@@ -178,7 +178,7 @@ var simulator = {
             $($("#skills img")[i]).addClass(key);
 
             var skillLevel = this.skillLevels.get(key);
-            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF;");
+            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF");
 
             i += 1
         });
@@ -192,7 +192,7 @@ var simulator = {
         var skillLevelNodes = $(`.${skillName}`).parent().find(".skill-level-node");
 
         skillLevelNodes.css("background-color", "");
-        skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF;");
+        skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF");
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
