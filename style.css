@@ -59,10 +59,16 @@
     display: flex;
 }
 
-.skill-levels {
+.selected-skill {
     display: flex;
     flex-wrap: wrap;
     width: 82px;
+}
+
+.skill-icon {
+    height: 80px;
+    width: 80px;
+    border: 1px solid black;
 }
 
 .skill-level-node {

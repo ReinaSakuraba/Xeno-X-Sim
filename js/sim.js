@@ -104,38 +104,40 @@ var simulator = {
             $('#skill-selector').append(this.createSkillNode(key, value, className));
         });
 
+        for (var i of range(classes[this.currentClass].skillSlots)) {
+            $("#skills").append(`<div class="selected-skill"><img class="skill-icon"></div>`);
+        }
+
+        for (var i of range(5)) {
+            $(".selected-skill").append(`<div class="skill-level-node"></div>`);
+        }
+
+        $("#skills").append(`<input type="submit" id="edit-skills" value="Edit Skills">`);
+
         $(".skill-node").click(function() {
             simulator.changeSkill($(this).attr("id"));
         });
 
-        for (var i of range(classes[this.currentClass].skillSlots)) {
-            $("#skills").append(`<div class="skill-levels"><img height="80" width="80" border="1px solid black"></div>`);
-        }
-
-        for (var i of range(5)) {
-            $(".skill-levels").append(`<div class="skill-level-node skill-level-node-${i}"></div>`);
-        }
-
-        $("#skills").append(`<input type="submit" value="Edit Skills">`);
-
         $(".skill-level-node").click(function() {
-            var skillName = $(this).parent().find("img").attr("class");
-            if (!skillName) return;
+            var nodeID = $(this).parent().attr("id");
+            if (!nodeID) return;
 
+            var skillName = nodeID.replace("selected-skill-", "")
             var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
-        $(".skill-levels").on("mousewheel", function(event) {
-            var skillName = $(this).find("img").attr("class");
-            if (!skillName) return;
+        $(".selected-skill").on("mousewheel", function(event) {
+            var nodeID = $(this).attr("id");
+            if (!nodeID) return;
 
+            var skillName = nodeID.replace("selected-skill-", "")
             var oldLevel = simulator.skillLevels.get(skillName);
             var newLevel = event.originalEvent.wheelDeltaY > 0 ? oldLevel + 1 : oldLevel - 1;
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
-        $("#skills input").click(function() {
+        $("#edit-skills").click(function() {
             $("#skill-layer").removeClass("hidden");
             $("body").append(`<div class="mask"></div>`);
 
@@ -168,17 +170,17 @@ var simulator = {
             this.currentSkills.add(skillName);
         }
 
-        $("#skills img").attr("src", "");
-        $("#skills img").attr("class", "");
+        $(".skill-icon").attr("src", "");
+        $(".selected-skill").attr("id", "");
         $(".skill-level-node").css("background-color", "");
 
         var i = 0;
         this.currentSkills.forEach(key => {
-            $("#skills img")[i].src = `images/skills/${skills[key].name}.png`;
-            $($("#skills img")[i]).addClass(key);
+            $($(".selected-skill")[i]).attr("id", `selected-skill-${key}`);
+            $(`#selected-skill-${key} .skill-icon`).attr("src", `images/skills/${skills[key].name}.png`);
 
             var skillLevel = this.skillLevels.get(key);
-            $(`.${key}`).parent().find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF");
+            $(`#selected-skill-${key} .skill-level-node`).slice(0, skillLevel).css("background-color", "#0000FF");
 
             i += 1
         });
@@ -189,7 +191,7 @@ var simulator = {
     changeSkillLevel: function(skillName, skillLevel) {
         if (skillLevel > 5 || skillLevel < 1) return;
 
-        var skillLevelNodes = $(`.${skillName}`).parent().find(".skill-level-node");
+        var skillLevelNodes = $(`#selected-skill-${skillName} .skill-level-node`);
 
         skillLevelNodes.css("background-color", "");
         skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF");
