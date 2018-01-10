@@ -176,11 +176,12 @@ var simulator = {
 
         var i = 0;
         this.currentSkills.forEach(key => {
-            $($(".selected-skill")[i]).attr("id", `selected-skill-${key}`);
-            $(`#selected-skill-${key} .skill-icon`).attr("src", `images/skills/${skills[key].name}.png`);
+            var selectedSkill = $(`.selected-skill:eq(${i})`);
+            selectedSkill.attr("id", `selected-skill-${key}`);
+            selectedSkill.find(".skill-icon").attr("src", `images/skills/${skills[key].name}.png`);
 
             var skillLevel = this.skillLevels.get(key);
-            $(`#selected-skill-${key} .skill-level-node`).slice(0, skillLevel).css("background-color", "#0000FF");
+            selectedSkill.find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF");
 
             i += 1
         });
