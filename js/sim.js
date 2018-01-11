@@ -22,18 +22,30 @@ $(function() {
     $("#level-selector").change(function() {
         simulator.changeLevel($(this).val());
     });
+
+    $("#melee-weapon-selector").change(function() {
+        simulator.changeWeapon("Melee", $(this).val());
+    });
+
+    $("#ranged-weapon-selector").change(function() {
+        simulator.changeWeapon("Ranged", $(this).val());
+    });
 });
 
 
 var simulator = {
     currentClass: "drifter",
     currentLevel: 60,
+    currentMeleeWeapon: "longsword",
+    currentRangedWeapon: "assaultRifle",
     currentSkills: new Set(),
     skillLevels: new Map(),
 
     init: function() {
         $("#class-selector").html("");
         $("#level-selector").html("");
+        $("#melee-weapon-selector").html("");
+        $("#ranged-weapon-selector").html("");
 
         Object.entries(classes).forEach(([key, value]) => {
             if (value.name == "Elma") {
@@ -50,8 +62,14 @@ var simulator = {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
+        Object.entries(weapons).forEach(([key, value]) => {
+            $(`#${value.type.toLowerCase().replace(" ", "-")}-selector`).append(`<option value="${key}">${value.name}</option>`);
+        });
+
         $("#class-selector").val(this.currentClass);
         $("#level-selector").val(this.currentLevel);
+        $("#melee-weapon-selector").val(this.currentMeleeWeapon);
+        $("#ranged-weapon-selector").val(this.currentRangedWeapon);
         this.updateStats();
         this.setSkills(this.currentClass);
     },
@@ -199,6 +217,10 @@ var simulator = {
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
+    },
+
+    changeWeapon: function(weaponType, weapon) {
+        this[`current${weaponType}Weapon`] = weapon;
     },
 
     createSkillNode: function(skill, skillData, className) {
