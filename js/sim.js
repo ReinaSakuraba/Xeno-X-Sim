@@ -16,11 +16,11 @@ function range(start, stop, step=1) {
 $(function() {
     simulator.init();
     $("#class-selector").change(function() {
-        simulator.changeClass($(this).val());
+        simulator.currentClass = $(this).val();
     });
 
     $("#level-selector").change(function() {
-        simulator.changeLevel($(this).val());
+        simulator.changeLevel = $(this).val();
     });
 
     $("#melee-weapon-selector, #ranged-weapon-selector").change(function() {
@@ -30,8 +30,23 @@ $(function() {
 
 
 var simulator = {
-    currentClass: "drifter",
-    currentLevel: 60,
+    get currentClass() {
+        return $("#class-selector").val();
+    },
+    set currentClass(value) {
+        $("#class-selector").val(value);
+        this.setSkills();
+        this.updateStats();
+    },
+
+    get currentLevel() {
+        return $("#level-selector").val();
+    },
+    set currentLevel(value) {
+        $("#level-selector").val(value);
+        this.updateStats();
+    },
+
     currentMeleeWeapon: "longsword",
     currentRangedWeapon: "assaultRifle",
     currentSkills: new Set(),
@@ -62,12 +77,12 @@ var simulator = {
             $(`#${value.type.toLowerCase().replace(" ", "-")}-selector`).append(`<option value="${key}">${value.name}</option>`);
         });
 
-        $("#class-selector").val(this.currentClass);
-        $("#level-selector").val(this.currentLevel);
+        this.currentClass = "drifter";
+        this.currentLevel = 60;
         $("#melee-weapon-selector").val(this.currentMeleeWeapon);
         $("#ranged-weapon-selector").val(this.currentRangedWeapon);
         this.updateStats();
-        this.setSkills(this.currentClass);
+        this.setSkills();
     },
 
     updateStats: function() {
@@ -108,14 +123,14 @@ var simulator = {
         });
     },
 
-    setSkills: function(className) {
-        var validSkills = classes[className].skills || skills;
+    setSkills: function() {
+        var validSkills = classes[this.currentClass].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
         this.currentSkills.clear();
 
         Object.entries(validSkills).forEach(([key, value]) => {
-            $('#skill-selector').append(this.createSkillNode(key, value, className));
+            $('#skill-selector').append(this.createSkillNode(key, value, this.currentClass));
         });
 
         for (var i of range(classes[this.currentClass].skillSlots)) {
@@ -160,17 +175,6 @@ var simulator = {
                 $(".mask").remove();
             });
         });
-    },
-
-    changeClass: function(className) {
-        this.currentClass = className;
-        this.setSkills(this.currentClass);
-        this.updateStats();
-    },
-
-    changeLevel: function(level) {
-        this.currentLevel = level;
-        this.updateStats();
     },
 
     changeSkill: function(skillName) {
