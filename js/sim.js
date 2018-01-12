@@ -23,12 +23,8 @@ $(function() {
         simulator.changeLevel($(this).val());
     });
 
-    $("#melee-weapon-selector").change(function() {
-        simulator.changeWeapon("Melee", $(this).val());
-    });
-
-    $("#ranged-weapon-selector").change(function() {
-        simulator.changeWeapon("Ranged", $(this).val());
+    $("#melee-weapon-selector, #ranged-weapon-selector").change(function() {
+        simulator.changeWeapon($(this).attr("id")[0] == "m" ? "Melee" : "Ranged", $(this).val());
     });
 });
 
