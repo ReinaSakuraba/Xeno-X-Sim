@@ -156,13 +156,13 @@ var simulator = {
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
-        $(".selected-skill").on("mousewheel", function(event) {
+        $(".selected-skill").on("wheel", function(event) {
             var nodeID = $(this).attr("id");
             if (!nodeID) return;
 
             var skillName = nodeID.replace("selected-skill-", "")
             var oldLevel = simulator.skillLevels.get(skillName);
-            var newLevel = event.originalEvent.wheelDeltaY > 0 ? oldLevel + 1 : oldLevel - 1;
+            var newLevel = event.originalEvent.deltaY < 0 ? oldLevel + 1 : oldLevel - 1;
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
