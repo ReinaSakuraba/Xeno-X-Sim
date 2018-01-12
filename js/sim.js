@@ -16,11 +16,11 @@ function range(start, stop, step=1) {
 $(function() {
     simulator.init();
     $("#class-selector").change(function() {
-        simulator.currentClass = $(this).val();
+        simulator.currentClass = this.value;
     });
 
     $("#level-selector").change(function() {
-        simulator.changeLevel = $(this).val();
+        simulator.currentLevel = this.value;
     });
 
     $("#melee-weapon-selector, #ranged-weapon-selector").change(function() {
