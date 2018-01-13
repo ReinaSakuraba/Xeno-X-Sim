@@ -120,7 +120,7 @@ var classes = {
         evasion: 1.0,
         potential: 0.85
     },
-    bastionWarror: {
+    bastionWarrior: {
         name: "Bastion Warrior",
         skillSlots: 4,
         hp: 1.5,
