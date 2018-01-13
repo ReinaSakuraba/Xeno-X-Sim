@@ -74,7 +74,7 @@ var simulator = {
         }
 
         Object.entries(weapons).forEach(([key, value]) => {
-            $(`#${value.type.toLowerCase().replace(" ", "-")}-selector`).append(`<option value="${key}">${value.name}</option>`);
+            $(`#${value.type.toLowerCase()}-weapon-selector`).append(`<option value="${key}">${value.name}</option>`);
         });
 
         this.currentClass = "drifter";

@@ -1,67 +1,67 @@
 var weapons = {
     longsword: {
         name: "Longsword",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     shield: {
         name: "Shield",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     dualSwords: {
         name: "Dual Swords",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     javelin: {
         name: "Javelin",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     knife: {
         name: "Knife",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     photonSaber: {
         name: "Photon Saber",
-        type: "Melee Weapon",
+        type: "Melee",
         weapons: {}
     },
     assaultRifle: {
         name: "Assault Rifle",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     gatlingGun: {
         name: "Gatling Gun",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     dualGuns: {
         name: "Dual Guns",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     sniperRifle: {
         name: "Sniper Rifle",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     raygun: {
         name: "Raygun",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     psychoLaunchers: {
         name: "Psycho Launchers",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     },
     multigun: {
         name: "Multigun",
-        type: "Ranged Weapon",
+        type: "Ranged",
         weapons: {}
     }
 };
