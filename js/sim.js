@@ -15,19 +15,7 @@ function range(start, stop, step=1) {
 
 $(function() {
     simulator.init();
-    $("#class-selector").change(function() {
-        simulator.currentClass = this.value;
-    });
-
-    $("#level-selector").change(function() {
-        simulator.currentLevel = this.value;
-    });
-
-    $("#melee-weapon-selector, #ranged-weapon-selector").change(function() {
-        simulator.changeWeapon($(this).attr("id")[0] == "m" ? "Melee" : "Ranged", $(this).val());
-    });
 });
-
 
 var simulator = {
     get currentClass() {
@@ -47,8 +35,20 @@ var simulator = {
         this.updateStats();
     },
 
-    currentMeleeWeapon: "longsword",
-    currentRangedWeapon: "assaultRifle",
+    get currentMeleeWeapon() {
+        return $("#melee-weapon-selector").val();
+    },
+    set currentMeleeWeapon(value) {
+        $("#melee-weapon-selector").val(value);
+    },
+
+    get currentRangedWeapon() {
+        return $("#ranged-weapon-selector").val();
+    },
+    set currentRangedWeapon(value) {
+        $("#ranged-weapon-selector").val(value);
+    },
+
     currentSkills: new Set(),
     skillLevels: new Map(),
 
@@ -79,10 +79,8 @@ var simulator = {
 
         this.currentClass = "drifter";
         this.currentLevel = 60;
-        $("#melee-weapon-selector").val(this.currentMeleeWeapon);
-        $("#ranged-weapon-selector").val(this.currentRangedWeapon);
-        this.updateStats();
-        this.setSkills();
+        this.currentMeleeWeapon = "longsword";
+        this.currentRangedWeapon = "assaultRifle";
     },
 
     updateStats: function() {
@@ -217,10 +215,6 @@ var simulator = {
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
-    },
-
-    changeWeapon: function(weaponType, weapon) {
-        this[`current${weaponType}Weapon`] = weapon;
     },
 
     createSkillNode: function(skill, skillData, className) {

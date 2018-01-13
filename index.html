@@ -19,8 +19,8 @@
                     <th colspan="8">Base Stats</th>
                 </tr>
                 <tr>
-                    <th colspan="4">Class: <select id="class-selector"><option value="None">None</option></select></th>
-                    <th colspan="4">Level: <select id="level-selector"><option value="None">None</option></select></th>
+                    <th colspan="4">Class: <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select></th>
+                    <th colspan="4">Level: <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select></th>
                 </tr>
                 <tr>
                     <th>HP</th>
@@ -48,8 +48,8 @@
     <div id="skills">
         <!-- Selected skills are appended here by sim.js -->
     </div>
-    Melee Weapon: <select id="melee-weapon-selector"><option value="None">None</option></select>
-    Ranged Weapon: <select id="ranged-weapon-selector"><option value="None">None</option></select>
+    Melee Weapon: <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;"><option value="None">None</option></select>
+    Ranged Weapon: <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;"><option value="None">None</option></select>
     <div id="skill-layer" class="hidden">
         <div id="skill-selector">
             <!-- Skills are appended here by sim.js -->
