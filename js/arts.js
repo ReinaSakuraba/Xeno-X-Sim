@@ -284,7 +284,6 @@ var arts = {
         weapon: "Assault Rifle",
         class: "Duelist 2",
         range: "Target: Self",
-        attribute: "",
         tp: 1000,
         description: "[TP] Boosts ranged attack + Boosts critical chance + Reduces secondary cooldown.",
         cooldownBonus: "Aura tier +[1/2] / Effect duration +[20/40]s",
