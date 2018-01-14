@@ -18,34 +18,42 @@ $(function() {
 });
 
 var simulator = {
+    _currentClass: "drifter",
     get currentClass() {
-        return $("#class-selector").val();
+        return this._currentClass;
     },
     set currentClass(value) {
+        this._currentClass = value;
         $("#class-selector").val(value);
         this.setSkills();
         this.updateStats();
     },
 
+    _currentLevel: 60,
     get currentLevel() {
-        return $("#level-selector").val();
+        return this._currentLevel;
     },
     set currentLevel(value) {
+        this._currentLevel = value;
         $("#level-selector").val(value);
         this.updateStats();
     },
 
+    _currentMeleeWeapon: "longsword",
     get currentMeleeWeapon() {
-        return $("#melee-weapon-selector").val();
+        return this._currentMeleeWeapon;
     },
     set currentMeleeWeapon(value) {
+        this._currentMeleeWeapon = value;
         $("#melee-weapon-selector").val(value);
     },
 
+    _currentRangedWeapon: "assaultRifle",
     get currentRangedWeapon() {
-        return $("#ranged-weapon-selector").val();
+        return this._currentRangedWeapon;;
     },
     set currentRangedWeapon(value) {
+        this._currentRangedWeapon = value;
         $("#ranged-weapon-selector").val(value);
     },
 
