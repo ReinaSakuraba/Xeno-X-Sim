@@ -171,6 +171,8 @@ var simulator = {
             $(".mask").click(function() {
                 $("#skill-layer").addClass("hidden");
                 $(".mask").remove();
+                $(".skill-node").removeClass("hidden");
+                $("#skill-search").val("");
             });
         });
     },
@@ -235,5 +237,16 @@ var simulator = {
             </div>
         `
         return node;
+    },
+
+    searchSkill: function(query) {
+        regex = new RegExp(query, "i");
+        $(".skill-node").addClass("hidden");
+
+        for (var [key, value] of Object.entries(skills)) {
+            if (value.name.search(regex) != -1) {
+                $(`#${key}`).removeClass("hidden");
+            }
+        }
     }
 }
