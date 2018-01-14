@@ -234,7 +234,7 @@ var arts = {
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
         aura: "Medic Free [I/II/III/IV/V]",
         effectDuration: "[20.0/22.0/24.0/26.0/28.0]s",
-        auraEffects: "Auta-recovers HP upon incapacitation. Boosts resistance to all debuffs."
+        auraEffects: "Auto-recovers HP upon incapacitation. Boosts resistance to all debuffs."
     },
     assaultBreaker: {
         name: "Assault Breaker",
@@ -464,7 +464,7 @@ var arts = {
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
         aura: "Enhanced Stand [I/II/III/IV/V]",
         effectDuration: "[20.0/22.0/24.0/26.0/28.0]s",
-        auraEffects: "Boosts auto-attack power. Recover continual HP over time."
+        auraEffects: "Boosts auto-attack attack power. Recovers continual HP over time."
     },
     realityRift: {
         name: "Reality Rift",
@@ -488,7 +488,7 @@ var arts = {
         range: "Target: Single Enemy",
         attribute: "Thermal",
         tp: 1000,
-        description: "[TP] Deals thermal damage + VS. TOPPLED TARGET: boosts damage.",
+        description: "[TP] Deals thermal damage + VS. TOPPLED TARGETS: boosts damage.",
         cooldownBonus: "Damage +[250/400]%",
         cooldown: "[30.0/25.2/22.8/20.4/18.0]s",
         hitScaling: "[500/600/700/800/900]%",
@@ -519,7 +519,7 @@ var arts = {
         description: "Removes debuffs + WITH AN AURA: consumes aura to yield TP.",
         cooldownBonus: "Immediate reuse",
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
-        specialEffects: "Consumes our currently active aura to yield [1000/1250/1500/1750/2000] TP."
+        specialEffects: "Consumes your currently active aura to yield [1000/1250/1500/1750/2000] TP."
     },
     supershield: {
         name: "Supershield",
@@ -527,7 +527,7 @@ var arts = {
         class: "Bastion Warrior 8",
         range: "Target: Self",
         tp: 1000,
-        description: "[TP] Reflects physical attacks +    Reduces damage taken + Nullifies Stun.",
+        description: "[TP] Reflects physical attacks + Reduces damage taken + Nullifies Stun.",
         cooldownBonus: "Aura tier +[1/2] / Effect duration +[20/40]s",
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
         aura: "Supershield [I/II/III/IV/V]",
@@ -559,7 +559,7 @@ var arts = {
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
         aura: "Early Bird [I/II/III/IV/V]",
         effectDuration: "[20.0/22.0/24.0/26.0/28.0]s",
-        auraEffects: "Raises te tier of an active Critical Power buff. Boosts critical chance. Boosts evasion."
+        auraEffects: "Raises the tier of an active Critical Power buff. Boosts critical chance. Boosts evasion."
     },
     streamEdge: {
         name: "Stream Edge",
@@ -783,12 +783,12 @@ var arts = {
         range: "Target: Single Enemy",
         attribute: "Weapon",
         tp: 0,
-        description: "Deals weapon damage + Boosts Appendage damage",
+        description: "Deals weapon damage + Boosts appendage damage",
         cooldownBonus: "Damage +[250/400]%",
         cooldown: "[30.0/25.2/22.8/20.4/18.0]s",
         hitScaling: "[500/600/700/800/900]%",
         hits: 1,
-        specialEffects: "Deals [100/125/150/175/200]% more damage to appendages +"
+        specialEffects: "Deals [100/125/150/175/200]% more damage to appendages."
     },
     eagleEye: {
         name: "Eagle Eye",
@@ -801,7 +801,7 @@ var arts = {
         cooldown: "[40.0/33.6/30.4/27.2/24.0]s",
         effects: "Ranged Accuracy Up [I/I/II/II/III]",
         effectDuration: "20.0s",
-        specialEffects: "Grants Ranged Attack Up [I/II/III/IV/V]"
+        specialEffects: "Grants Ranged Attack Up [I/II/III/IV/V]."
     },
     raijin: {
         name: "Raijin",
@@ -1186,7 +1186,7 @@ var arts = {
     },
     stellarRay: {
         name: "Stellar Ray",
-        weapon: "P. Launcher",
+        weapon: "Pscyho Launcher",
         class: "Blast Fencer 1",
         range: "Target: Nearby Enemies",
         attribute: "Weapon",
@@ -1215,7 +1215,7 @@ var arts = {
     },
     lightningCloak: {
         name: "Lightning Cloak",
-        weapon: "P. Launcher",
+        weapon: "Psycho Launcher",
         class: "Blast Fencer 2",
         range: "Target: Nearby Allies",
         tp: 0,
@@ -1241,7 +1241,7 @@ var arts = {
     },
     jetstream: {
         name: "Jetstream",
-        weapon: "P. Launcher",
+        weapon: "Psycho Launcher",
         class: "Blast Fencer 4",
         range: "Target: Enemies Ahead",
         attribute: "Ether",
@@ -1269,7 +1269,7 @@ var arts = {
     },
     shootingStar: {
         name: "Shooting Star",
-        weapon: "P. Launcher",
+        weapon: "Psycho Launcher",
         class: "Blast Fencer 8",
         range: "Target: Enemies Ahead",
         attribute: "Electric",
@@ -1296,7 +1296,7 @@ var arts = {
     },
     astralProtection: {
         name: "Astral Protection",
-        weapon: "P. Launcher",
+        weapon: "Psycho Launcher",
         class: "Galactic Knight 1",
         range: "Target: Self",
         tp: 1000,
@@ -1346,7 +1346,7 @@ var arts = {
     },
     starlightKick: {
         name: "Starlight Kick",
-        weapon: "P. Launcher",
+        weapon: "Psycho Launcher",
         class: "Galactic Knight 6",
         range: "Target: Single Enemy",
         attribute: "Gravity",
@@ -1434,7 +1434,7 @@ var arts = {
         range: "Target: Single Enemy",
         attribute: "Weapon",
         tp: 1000,
-        description: "[TP] Deals weapon damage +    Physical Res Down + IN MELEE COMBOS: boosts damage.",
+        description: "[TP] Deals weapon damage + Physical Res Down + IN MELEE COMBOS: boosts damage.",
         cooldownBonus: "Damage +[250/400]%",
         cooldown: "[30.0/25.2/22.8/20.4/18.0]s",
         hitScaling: "[150/200/250/300/350]%",
@@ -1815,7 +1815,7 @@ var arts = {
         description: "Swaps current HP and TP.",
         cooldownBonus: "Immediate reuse",
         cooldown: "[90.0/75.6/68.4/61.2/54.0]s",
-        extraEffects: "Swiches current HP and TP amounts"
+        extraEffects: "Switches current HP and TP amounts."
     },
     masterGunner: {
         name: "Master Gunner",
@@ -1846,7 +1846,7 @@ var arts = {
     maximumVoltage: {
         name: "Maximum Voltage",
         weapon: "Javelin",
-        class: "Alexa,    Rapid Misfire",
+        class: "Alexa, Rapid Misfire",
         range: "Target: Single Enemy",
         attribute: "Weapon",
         tp: 1000,
@@ -1855,7 +1855,7 @@ var arts = {
         cooldown: "[60.0/50.4/45.6/40.8/36.0]s",
         hitScaling: "[50/100/150/200/250]%",
         hits: 12,
-        specialEffects: "Deals [600/650/700/750/800]% more damage is your Skell is destroyed during the battle."
+        specialEffects: "Deals [600/650/700/750/800]% more damage if your Skell is destroyed during the battle."
     },
     vortex: {
         name: "Vortex",
@@ -1909,7 +1909,7 @@ var arts = {
         attribute: "Electric",
         tp: 0,
         description: "Deals electric damage + Inflicts Shock + WITH AURA: boosts damage.",
-        cooldownBonus: "damage +[250/400]%",
+        cooldownBonus: "Damage +[250/400]%",
         cooldown: "[30.0/25.2/22.8/20.4/18.0]s",
         hitScaling: "[150/187/225/262/300]%",
         hits: 4,
