@@ -37,8 +37,13 @@
 #skill-selector {
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
+    height: calc(100% - 21px);
     overflow-y: scroll;
+}
+
+#skill-search {
+    height: 21px;
+    width: 100%;
 }
 
 .skill-node {
