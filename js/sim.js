@@ -181,6 +181,11 @@ var simulator = {
         if (this.currentSkills.has(skillName)) {
             node.removeClass("selected");
             this.currentSkills.delete(skillName);
+        } else if (this.currentClass == "striker") {
+            $(".selected").removeClass("selected");
+            this.currentSkills.clear();
+            node.addClass("selected");
+            this.currentSkills.add(skillName);
         } else if (this.currentSkills.size < classes[this.currentClass].skillSlots) {
             node.addClass("selected");
             this.currentSkills.add(skillName);
