@@ -52,7 +52,7 @@
     Melee Weapon: <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;"><option value="None">None</option></select>
     Ranged Weapon: <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;"><option value="None">None</option></select>
     <div id="skill-layer" class="hidden">
-        <input type="text" id="skill-search" onchange="simulator.searchSkill(this.value);" placeholder="Search...">
+        <input type="text" id="skill-search" oninput="simulator.searchSkill(this.value);" placeholder="Search...">
         <div id="skill-selector">
             <!-- Skills are appended here by sim.js -->
         </div>
