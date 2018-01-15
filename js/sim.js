@@ -240,7 +240,7 @@ class Simulator {
     }
 
     searchSkill(query) {
-        regex = new RegExp(query, "i");
+        var regex = new RegExp(query, "i");
         $(".skill-node").addClass("hidden");
 
         for (var [key, value] of Object.entries(skills)) {
