@@ -36,6 +36,7 @@
 
 #skill-selector {
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
     height: calc(100% - 21px);
     overflow-y: scroll;
@@ -47,6 +48,7 @@
 }
 
 .skill-node {
+    max-height: 140px;
     width: calc(50% - 2px);
     box-sizing: border-box;
     border: 1px solid #777777;
