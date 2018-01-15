@@ -79,7 +79,7 @@ var weapons = {
                 },
                 sellPrice: 10
             },
-            masterstokeGlaive: {
+            masterstrokeGlaive: {
                 name: "Masterstroke Glaive",
                 type: "Longsword",
                 rarity: "Common",
@@ -95,7 +95,7 @@ var weapons = {
                 innateTraits: {},
                 sellPrice: 10
             },
-            masterstokeGlaiveII: {
+            masterstrokeGlaiveII: {
                 name: "Masterstroke Glaive II",
                 type: "Longsword",
                 rarity: "Common",
@@ -147,8 +147,8 @@ var weapons = {
                 stability: 20,
                 upgrades: 10,
                 innateTraits: {
-                    meleeTPGainUp: 4,
-                    stundDecoy: 4,
+                    meleeTPGainUp: 1,
+                    stunDecoy: 4,
                     extendBlaze: 4
                 },
                 sellPrice: 10
@@ -187,8 +187,8 @@ var weapons = {
                 stability: 20,
                 upgrades: 10,
                 innateTraits: {
-                    meleeTPGainUp: 12,
-                    stundDecoy: 12,
+                    meleeTPGainUp: 1,
+                    stunDecoy: 12,
                     extendBlaze: 12
                 },
                 sellPrice: 10
@@ -615,8 +615,8 @@ var weapons = {
                 innateTraits: {},
                 sellPrice: 10
             },
-            originalLyst: {
-                name: "Original Lyst",
+            originalIyst: {
+                name: "Original Iyst",
                 type: "Knife",
                 rarity: "Common",
                 attack: 96,
@@ -631,8 +631,8 @@ var weapons = {
                 innateTraits: {},
                 sellPrice: 10
             },
-            originalLystII: {
-                name: "Original Lyst II",
+            originalIystII: {
+                name: "Original Iyst II",
                 type: "Knife",
                 rarity: "Common",
                 attack: 96,
@@ -918,7 +918,7 @@ var weapons = {
                 sellPrice: 10
             },
             archetypeRepethe: {
-                name: "Archetype Repeth",
+                name: "Archetype Repethe",
                 type: "Gatling Gun",
                 rarity: "Prime",
                 attack: 15,
@@ -1067,8 +1067,8 @@ var weapons = {
                 },
                 sellPrice: 10
             },
-            archetypeDualGuns: {
-                name: "Archetype Dual Guns",
+            archetypeDualGunsII: {
+                name: "Archetype Dual Guns II",
                 type: "Dual Guns",
                 rarity: "Prime",
                 attack: 27,
@@ -1152,7 +1152,7 @@ var weapons = {
                 sellPrice: 10
             },
             masterstrokeSidearm: {
-                name: "Masterstroke Sidearms",
+                name: "Masterstroke Sidearm",
                 type: "Dual Guns",
                 rarity: "Common",
                 attack: 58,
@@ -1493,8 +1493,8 @@ var weapons = {
                 },
                 sellPrice: 10
             },
-            originalSabateurs: {
-                name: "Original Sabateurs",
+            originalSaboteurs: {
+                name: "Original Saboteurs",
                 type: "Psycho Launchers",
                 rarity: "Common",
                 attack: 72,
