@@ -13,54 +13,11 @@ function range(start, stop, step=1) {
 }
 
 
-$(function() {
-    simulator.init();
-});
+class Simulator {
+    constructor() {
+        this.currentSkills = new Set();
+        this.skillLevels = new Map();
 
-var simulator = {
-    _currentClass: "drifter",
-    get currentClass() {
-        return this._currentClass;
-    },
-    set currentClass(value) {
-        this._currentClass = value;
-        $("#class-selector").val(value);
-        this.setSkills();
-        this.updateStats();
-    },
-
-    _currentLevel: 60,
-    get currentLevel() {
-        return this._currentLevel;
-    },
-    set currentLevel(value) {
-        this._currentLevel = value;
-        $("#level-selector").val(value);
-        this.updateStats();
-    },
-
-    _currentMeleeWeapon: "longsword",
-    get currentMeleeWeapon() {
-        return this._currentMeleeWeapon;
-    },
-    set currentMeleeWeapon(value) {
-        this._currentMeleeWeapon = value;
-        $("#melee-weapon-selector").val(value);
-    },
-
-    _currentRangedWeapon: "assaultRifle",
-    get currentRangedWeapon() {
-        return this._currentRangedWeapon;;
-    },
-    set currentRangedWeapon(value) {
-        this._currentRangedWeapon = value;
-        $("#ranged-weapon-selector").val(value);
-    },
-
-    currentSkills: new Set(),
-    skillLevels: new Map(),
-
-    init: function() {
         $("#class-selector").html("");
         $("#level-selector").html("");
         $("#melee-weapon-selector").html("");
@@ -89,9 +46,44 @@ var simulator = {
         this.currentLevel = 60;
         this.currentMeleeWeapon = "longsword";
         this.currentRangedWeapon = "assaultRifle";
-    },
+    }
 
-    updateStats: function() {
+    get currentClass() {
+        return this._currentClass;
+    }
+    set currentClass(value) {
+        this._currentClass = value;
+        $("#class-selector").val(value);
+        this.setSkills();
+        this.updateStats();
+    }
+
+    get currentLevel() {
+        return this._currentLevel;
+    }
+    set currentLevel(value) {
+        this._currentLevel = value;
+        $("#level-selector").val(value);
+        this.updateStats();
+    }
+
+    get currentMeleeWeapon() {
+        return this._currentMeleeWeapon;
+    }
+    set currentMeleeWeapon(value) {
+        this._currentMeleeWeapon = value;
+        $("#melee-weapon-selector").val(value);
+    }
+
+    get currentRangedWeapon() {
+        return this._currentRangedWeapon;;
+    }
+    set currentRangedWeapon(value) {
+        this._currentRangedWeapon = value;
+        $("#ranged-weapon-selector").val(value);
+    }
+
+    updateStats() {
         Object.entries(stats).forEach(([stat, value]) => {
             var statBase = Math.floor(value.multiplier * this.currentLevel + value.base);
             var classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
@@ -127,9 +119,9 @@ var simulator = {
             var finalStats = Math.floor(classBase + skillBonus);
             $(`#stat-${value.short}`).html(finalStats);
         });
-    },
+    }
 
-    setSkills: function() {
+    setSkills() {
         var validSkills = classes[this.currentClass].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
@@ -183,9 +175,9 @@ var simulator = {
                 $("#skill-search").val("");
             });
         });
-    },
+    }
 
-    changeSkill: function(skillName) {
+    changeSkill(skillName) {
         var node = $(`#${skillName}`)
 
         if (this.currentSkills.has(skillName)) {
@@ -218,9 +210,9 @@ var simulator = {
         });
 
         this.updateStats();
-    },
+    }
 
-    changeSkillLevel: function(skillName, skillLevel) {
+    changeSkillLevel(skillName, skillLevel) {
         if (skillLevel > 5 || skillLevel < 1) return;
 
         var skillLevelNodes = $(`#selected-skill-${skillName} .skill-level-node`);
@@ -230,9 +222,9 @@ var simulator = {
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
-    },
+    }
 
-    createSkillNode: function(skill, skillData, className) {
+    createSkillNode(skill, skillData, className) {
         var node = `
             <div class="skill-node no-highlight" id="${skill}">
                 <div class="top">
@@ -245,9 +237,9 @@ var simulator = {
             </div>
         `
         return node;
-    },
+    }
 
-    searchSkill: function(query) {
+    searchSkill(query) {
         regex = new RegExp(query, "i");
         $(".skill-node").addClass("hidden");
 
