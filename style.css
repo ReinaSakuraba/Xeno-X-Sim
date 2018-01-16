@@ -38,13 +38,13 @@
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
-    height: calc(100% - 21px);
+    height: calc(100% - 27px);
     overflow-y: scroll;
 }
 
 #skill-search {
     height: 21px;
-    width: 100%;
+    width: calc(100% - 4px);
 }
 
 .skill-node {
