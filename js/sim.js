@@ -4,8 +4,8 @@ function range(start, stop, step=1) {
         start = 1;
     }
 
-    var result = [];
-    for (var i = start; step > 0 ? i <= stop : i >= stop; i += step) {
+    let result = [];
+    for (let i = start; step > 0 ? i <= stop : i >= stop; i += step) {
         result.push(i);
     }
 
@@ -21,18 +21,18 @@ class Simulator {
         $("#class-selector").html("");
         $("#level-selector").html("");
 
-        for (var [className, classData] of Object.entries(classes)) {
+        for (let [className, classData] of Object.entries(classes)) {
             if (className == "elma") {
                 $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
             }
             $("#class-selector").append(`<option value="${className}">${classData.name}</option>`);
         }
 
-        for (var skill in skills) {
+        for (let skill in skills) {
             this.skillLevels.set(skill, 1);
         }
 
-        for (var i of range(60)) {
+        for (let i of range(60)) {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
 
@@ -78,13 +78,13 @@ class Simulator {
     }
 
     updateStats() {
-        for (var [stat, statData] of Object.entries(stats)) {
-            var statBase = Math.floor(statData.multiplier * this.currentLevel + statData.base);
-            var classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
-            var skillBonus = 0;
+        for (let [stat, statData] of Object.entries(stats)) {
+            let statBase = Math.floor(statData.multiplier * this.currentLevel + statData.base);
+            let classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
+            let skillBonus = 0;
 
             this.currentSkills.forEach(key => {
-                var skillLevel = this.skillLevels.get(key);
+                let skillLevel = this.skillLevels.get(key);
 
                 switch (`${key} | ${stat}`) {
                     case "steelFlesh | hp":
@@ -110,26 +110,26 @@ class Simulator {
                 }
             });
 
-            var finalStats = Math.floor(classBase + skillBonus);
+            let finalStats = Math.floor(classBase + skillBonus);
             $(`#stat-${statData.short}`).html(finalStats);
         }
     }
 
     setSkills() {
-        var validSkills = classes[this.currentClass].skills || skills;
+        let validSkills = classes[this.currentClass].skills || skills;
         $("#skill-selector").html("");
         $("#skills").html("");
         this.currentSkills.clear();
 
-        for (var [skill, skillData] of Object.entries(validSkills)) {
+        for (let [skill, skillData] of Object.entries(validSkills)) {
             $('#skill-selector').append(this.createSkillNode(skill, skillData, this.currentClass));
         }
 
-        for (var i of range(classes[this.currentClass].skillSlots)) {
+        for (let i of range(classes[this.currentClass].skillSlots)) {
             $("#skills").append(`<div class="selected-skill"><img class="skill-icon"></div>`);
         }
 
-        for (var i of range(5)) {
+        for (let i of range(5)) {
             $(".selected-skill").append(`<div class="skill-level-node"></div>`);
         }
 
@@ -140,21 +140,21 @@ class Simulator {
         });
 
         $(".skill-level-node").click(function() {
-            var nodeID = $(this).parent().attr("id");
+            let nodeID = $(this).parent().attr("id");
             if (!nodeID) return;
 
-            var skillName = nodeID.replace("selected-skill-", "")
-            var newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
+            let skillName = nodeID.replace("selected-skill-", "")
+            let newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
         $(".selected-skill").on("wheel", function(event) {
-            var nodeID = $(this).attr("id");
+            let nodeID = $(this).attr("id");
             if (!nodeID) return;
 
-            var skillName = nodeID.replace("selected-skill-", "")
-            var oldLevel = simulator.skillLevels.get(skillName);
-            var newLevel = event.originalEvent.deltaY < 0 ? oldLevel + 1 : oldLevel - 1;
+            let skillName = nodeID.replace("selected-skill-", "")
+            let oldLevel = simulator.skillLevels.get(skillName);
+            let newLevel = event.originalEvent.deltaY < 0 ? oldLevel + 1 : oldLevel - 1;
             simulator.changeSkillLevel(skillName, newLevel);
         });
 
@@ -172,7 +172,7 @@ class Simulator {
     }
 
     changeSkill(skillName) {
-        var node = $(`#${skillName}`)
+        let node = $(`#${skillName}`)
 
         if (this.currentSkills.has(skillName)) {
             node.removeClass("selected");
@@ -191,13 +191,13 @@ class Simulator {
         $(".selected-skill").attr("id", "");
         $(".skill-level-node").css("background-color", "");
 
-        var i = 0;
+        let i = 0;
         this.currentSkills.forEach(key => {
-            var selectedSkill = $(`.selected-skill:eq(${i})`);
+            let selectedSkill = $(`.selected-skill:eq(${i})`);
             selectedSkill.attr("id", `selected-skill-${key}`);
             selectedSkill.find(".skill-icon").attr("src", `images/skills/${skills[key].name}.png`);
 
-            var skillLevel = this.skillLevels.get(key);
+            let skillLevel = this.skillLevels.get(key);
             selectedSkill.find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF");
 
             i += 1
@@ -209,7 +209,7 @@ class Simulator {
     changeSkillLevel(skillName, skillLevel) {
         if (skillLevel > 5 || skillLevel < 1) return;
 
-        var skillLevelNodes = $(`#selected-skill-${skillName} .skill-level-node`);
+        let skillLevelNodes = $(`#selected-skill-${skillName} .skill-level-node`);
 
         skillLevelNodes.css("background-color", "");
         skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF");
@@ -219,7 +219,7 @@ class Simulator {
     }
 
     createSkillNode(skill, skillData, className) {
-        var node = `
+        let node = `
             <div class="skill-node no-highlight" id="${skill}">
                 <div class="top">
                     <img src="images/skills/${skills[skill].name}.png">
@@ -234,10 +234,10 @@ class Simulator {
     }
 
     searchSkill(query) {
-        var regex = new RegExp(query, "i");
+        let regex = new RegExp(query, "i");
         $(".skill-node").addClass("hidden");
 
-        for (var [key, value] of Object.entries(skills)) {
+        for (let [key, value] of Object.entries(skills)) {
             if (value.name.search(regex) != -1) {
                 $(`#${key}`).removeClass("hidden");
             }
