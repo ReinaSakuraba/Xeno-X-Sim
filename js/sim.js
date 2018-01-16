@@ -20,8 +20,6 @@ class Simulator {
 
         $("#class-selector").html("");
         $("#level-selector").html("");
-        $("#melee-weapon-selector").html("");
-        $("#ranged-weapon-selector").html("");
 
         Object.entries(classes).forEach(([key, value]) => {
             if (value.name == "Elma") {
@@ -37,10 +35,6 @@ class Simulator {
         for (var i of range(60)) {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
         }
-
-        Object.entries(weapons).forEach(([key, value]) => {
-            $(`#${value.type.toLowerCase()}-weapon-selector`).append(`<option value="${key}">${value.name}</option>`);
-        });
 
         this.currentClass = "drifter";
         this.currentLevel = 60;
