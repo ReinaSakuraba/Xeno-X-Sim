@@ -21,16 +21,16 @@ class Simulator {
         $("#class-selector").html("");
         $("#level-selector").html("");
 
-        Object.entries(classes).forEach(([key, value]) => {
-            if (value.name == "Elma") {
+        for (var [className, classData] of Object.entries(classes)) {
+            if (className == "elma") {
                 $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
             }
-            $("#class-selector").append(`<option value="${key}">${value.name}</option>`);
-        });
+            $("#class-selector").append(`<option value="${className}">${classData.name}</option>`);
+        }
 
-        Object.keys(skills).forEach(key => {
-            this.skillLevels.set(key, 1);
-        });
+        for (var skill in skills) {
+            this.skillLevels.set(skill, 1);
+        }
 
         for (var i of range(60)) {
             $("#level-selector").append(`<option value"${i}">${i}</option>`);
@@ -78,8 +78,8 @@ class Simulator {
     }
 
     updateStats() {
-        Object.entries(stats).forEach(([stat, value]) => {
-            var statBase = Math.floor(value.multiplier * this.currentLevel + value.base);
+        for (var [stat, statData] of Object.entries(stats)) {
+            var statBase = Math.floor(statData.multiplier * this.currentLevel + statData.base);
             var classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
             var skillBonus = 0;
 
@@ -111,8 +111,8 @@ class Simulator {
             });
 
             var finalStats = Math.floor(classBase + skillBonus);
-            $(`#stat-${value.short}`).html(finalStats);
-        });
+            $(`#stat-${statData.short}`).html(finalStats);
+        }
     }
 
     setSkills() {
@@ -121,9 +121,9 @@ class Simulator {
         $("#skills").html("");
         this.currentSkills.clear();
 
-        Object.entries(validSkills).forEach(([key, value]) => {
-            $('#skill-selector').append(this.createSkillNode(key, value, this.currentClass));
-        });
+        for (var [skill, skillData] of Object.entries(validSkills)) {
+            $('#skill-selector').append(this.createSkillNode(skill, skillData, this.currentClass));
+        }
 
         for (var i of range(classes[this.currentClass].skillSlots)) {
             $("#skills").append(`<div class="selected-skill"><img class="skill-icon"></div>`);
