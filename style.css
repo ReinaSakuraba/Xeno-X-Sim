@@ -63,6 +63,7 @@
     height: 74px;
     width: 275px;
 	background-image: url("images/assets/Skills Palette.png");
+    background-repeat: no-repeat;
 }
 
 .skill-palette-icon {
