@@ -12,6 +12,19 @@ function range(start, stop, step=1) {
     return result;
 }
 
+$(function() {
+    $("#edit-skills").click(function() {
+        $("#skill-layer").removeClass("hidden");
+        $("body").append(`<div class="mask"></div>`);
+
+        $(".mask").click(function() {
+            $("#skill-layer").addClass("hidden");
+            $(".mask").remove();
+            $(".skill-node").removeClass("hidden");
+            $("#skill-search").val("");
+        });
+    });
+});
 
 class Simulator {
     constructor() {
@@ -135,18 +148,6 @@ class Simulator {
 
         $(".skill-node").click(function() {
             simulator.changeSkill($(this).attr("id"));
-        });
-
-        $("#edit-skills").click(function() {
-            $("#skill-layer").removeClass("hidden");
-            $("body").append(`<div class="mask"></div>`);
-
-            $(".mask").click(function() {
-                $("#skill-layer").addClass("hidden");
-                $(".mask").remove();
-                $(".skill-node").removeClass("hidden");
-                $("#skill-search").val("");
-            });
         });
     }
 
