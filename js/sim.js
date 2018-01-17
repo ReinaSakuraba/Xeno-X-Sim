@@ -144,7 +144,7 @@ class Simulator {
         }
 
         let skillSlots = classes[this.currentClass].skillSlots;
-        $("#skill-palette").css("background-position", `0px calc((${skillSlots} - 1) * -74px)`);
+        $("#skill-palette").css("background-position", `0px ${(skillSlots - 1) * -74}px`);
 
         $(".skill-node").click(function() {
             simulator.changeSkill($(this).attr("id"));
