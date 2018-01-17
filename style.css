@@ -65,26 +65,6 @@
 	background-image: url("images/assets/Skills Palette.png");
 }
 
-.skill-palette-1 {
-    background-position: 0px 0px;
-}
-
-.skill-palette-2 {
-    background-position: 0px -74px;
-}
-
-.skill-palette-3 {
-    background-position: 0px -148px;
-}
-
-.skill-palette-4 {
-    background-position: 0px -222px;
-}
-
-.skill-palette-5 {
-    background-position: 0px -296px;
-}
-
 .skill-palette-icon {
     height: 40px;
     width: 40px;

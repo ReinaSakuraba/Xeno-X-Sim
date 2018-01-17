@@ -130,7 +130,8 @@ class Simulator {
             `);
         }
 
-        $("#skill-palette").attr("class", `skill-palette-${classes[this.currentClass].skillSlots}`);
+        let skillSlots = classes[this.currentClass].skillSlots;
+        $("#skill-palette").css("background-position", `0px calc((${skillSlots} - 1) * -74px)`);
 
         $(".skill-node").click(function() {
             simulator.changeSkill($(this).attr("id"));
