@@ -118,7 +118,7 @@ class Simulator {
     setSkills() {
         let validSkills = classes[this.currentClass].skills || skills;
         $("#skill-selector").html("");
-        $("#skills").html("");
+        $(".skill-palette-icon").css("background-image", "");
         this.currentSkills.clear();
 
         for (let skill in validSkills) {
@@ -130,37 +130,10 @@ class Simulator {
             `);
         }
 
-        for (let i of range(classes[this.currentClass].skillSlots)) {
-            $("#skills").append(`<div class="selected-skill"><img class="skill-icon"></div>`);
-        }
-
-        for (let i of range(5)) {
-            $(".selected-skill").append(`<div class="skill-level-node"></div>`);
-        }
-
-        $("#skills").append(`<input type="submit" id="edit-skills" value="Edit Skills">`);
+        $("#skill-palette").attr("class", `skill-palette-${classes[this.currentClass].skillSlots}`);
 
         $(".skill-node").click(function() {
             simulator.changeSkill($(this).attr("id"));
-        });
-
-        $(".skill-level-node").click(function() {
-            let nodeID = $(this).parent().attr("id");
-            if (!nodeID) return;
-
-            let skillName = nodeID.replace("selected-skill-", "")
-            let newLevel = $(this).parent().find(".skill-level-node").index(this) + 1;
-            simulator.changeSkillLevel(skillName, newLevel);
-        });
-
-        $(".selected-skill").on("wheel", function(event) {
-            let nodeID = $(this).attr("id");
-            if (!nodeID) return;
-
-            let skillName = nodeID.replace("selected-skill-", "")
-            let oldLevel = simulator.skillLevels.get(skillName);
-            let newLevel = event.originalEvent.deltaY < 0 ? oldLevel + 1 : oldLevel - 1;
-            simulator.changeSkillLevel(skillName, newLevel);
         });
 
         $("#edit-skills").click(function() {
@@ -192,19 +165,11 @@ class Simulator {
             this.currentSkills.add(skillName);
         }
 
-        $(".skill-icon").attr("src", "");
-        $(".selected-skill").attr("id", "");
-        $(".skill-level-node").css("background-color", "");
+        $(".skill-palette-icon").css("background-image", "");
 
         let i = 0;
         this.currentSkills.forEach(key => {
-            let selectedSkill = $(`.selected-skill:eq(${i})`);
-            selectedSkill.attr("id", `selected-skill-${key}`);
-            selectedSkill.find(".skill-icon").attr("src", `images/skills/${skills[key].name}.png`);
-
-            let skillLevel = this.skillLevels.get(key);
-            selectedSkill.find(".skill-level-node").slice(0, skillLevel).css("background-color", "#0000FF");
-
+            $(`.skill-palette-icon:eq(${i})`).css("background-image", `url("images/skills/${skills[key].name}.png")`);
             i += 1
         });
 

@@ -53,9 +53,14 @@
             </tbody>
         </table>
     </div>
-    <div id="skills">
-        <!-- Selected skills are appended here by sim.js -->
+    <div id="skill-palette">
+        <div class="skill-palette-icon"></div>
+        <div class="skill-palette-icon"></div>
+        <div class="skill-palette-icon"></div>
+        <div class="skill-palette-icon"></div>
+        <div class="skill-palette-icon"></div>
     </div>
+    <input type="submit" id="edit-skills" value="Edit Skills">
     Melee Weapon:
     <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
         <option value="longsword">Longsword</option>

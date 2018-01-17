@@ -59,24 +59,36 @@
     background-color: #777777;
 }
 
-#skills {
-    display: flex;
+#skill-palette {
+    height: 74px;
+    width: 275px;
+	background-image: url("images/assets/Skills Palette.png");
 }
 
-.selected-skill {
-    display: flex;
-    flex-wrap: wrap;
-    width: 82px;
+.skill-palette-1 {
+    background-position: 0px 0px;
 }
 
-.skill-icon {
-    height: 80px;
-    width: 80px;
-    border: 1px solid black;
+.skill-palette-2 {
+    background-position: 0px -74px;
 }
 
-.skill-level-node {
-    width: calc(72px / 5);
-    height: calc(72px / 5);
-    border: 1px solid #777777;
+.skill-palette-3 {
+    background-position: 0px -148px;
+}
+
+.skill-palette-4 {
+    background-position: 0px -222px;
+}
+
+.skill-palette-5 {
+    background-position: 0px -296px;
+}
+
+.skill-palette-icon {
+    height: 40px;
+    width: 40px;
+    margin: 23px 10px 0px 5px;
+    float: left;
+    background-size: contain;
 }
