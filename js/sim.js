@@ -121,8 +121,13 @@ class Simulator {
         $("#skills").html("");
         this.currentSkills.clear();
 
-        for (let [skill, skillData] of Object.entries(validSkills)) {
-            $('#skill-selector').append(this.createSkillNode(skill, skillData, this.currentClass));
+        for (let skill in validSkills) {
+            $('#skill-selector').append(`
+                <div class="skill-node no-highlight" id="${skill}">
+                    <img src="images/skills/${skills[skill].name}.png">
+                    ${skills[skill].name}
+                </div>
+            `);
         }
 
         for (let i of range(classes[this.currentClass].skillSlots)) {
@@ -216,16 +221,6 @@ class Simulator {
 
         this.skillLevels.set(skillName, skillLevel);
         this.updateStats();
-    }
-
-    createSkillNode(skill, skillData, className) {
-        let node = `
-            <div class="skill-node no-highlight" id="${skill}">
-                <img src="images/skills/${skills[skill].name}.png">
-                ${skills[skill].name}
-            </div>
-        `
-        return node;
     }
 
     searchSkill(query) {
