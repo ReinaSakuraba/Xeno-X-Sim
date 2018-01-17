@@ -48,15 +48,11 @@
 }
 
 .skill-node {
-    max-height: 140px;
-    width: calc(50% - 2px);
+    height: 82px;
+    width: calc(25%  - 2px);
     box-sizing: border-box;
     border: 1px solid #777777;
     margin: 1px;
-}
-
-.skill-node .top {
-    display: flex;
 }
 
 .skill-node.selected {

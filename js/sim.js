@@ -221,13 +221,8 @@ class Simulator {
     createSkillNode(skill, skillData, className) {
         let node = `
             <div class="skill-node no-highlight" id="${skill}">
-                <div class="top">
-                    <img src="images/skills/${skills[skill].name}.png">
-                    ${skills[skill].name}
-                    <br />
-                    Learned: ${skillData.class || classes[className].class + " " + skillData}
-                </div>
-                Description: ${skills[skill].effect}
+                <img src="images/skills/${skills[skill].name}.png">
+                ${skills[skill].name}
             </div>
         `
         return node;
