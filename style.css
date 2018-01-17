@@ -65,7 +65,6 @@
     display: flex;
     justify-content: space-between;
     background-image: url("images/assets/Skills Palette.png");
-    background-repeat: no-repeat;
 }
 
 .skill-palette-icon {
