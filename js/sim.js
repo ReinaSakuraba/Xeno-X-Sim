@@ -13,6 +13,9 @@ function range(start, stop, step=1) {
 }
 
 $(function() {
+    let skillPalette = document.getElementById("skill-palette");
+    Sortable.create(skillPalette);
+
     $("#edit-skills").click(function() {
         $("#skill-layer").removeClass("hidden");
         $("body").append(`<div class="mask"></div>`);
