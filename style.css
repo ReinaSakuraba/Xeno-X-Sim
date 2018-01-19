@@ -82,6 +82,7 @@
 }
 
 #stats-display h1 {
+    font-weight: normal;
     height: 21px;
     line-height: 21px;
     font-size: 21px;
