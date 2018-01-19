@@ -65,24 +65,36 @@
 }
 
 #stats-display {
-    height: 204px;
+    height: 239px;
     width: 247px;
-    padding-top: 47px;
-    padding-bottom: 21px;
+    padding-top: 13px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-image: url("images/assets/Stats Display.png");
 }
 
-.stat {
+#stats-display p, #stats-display h1 {
+    margin: 0px 17px 0px 17px;
+    font-family: "NewRodin";
+    color: #DCDCDC;
+}
+
+#stats-display h1 {
+    height: 21px;
+    line-height: 21px;
+    font-size: 21px;
+}
+
+#stats-display p {
     height: 15px;
     line-height: 15px;
-    text-align: right;
-    margin-right: 18px;
-    font-family: "NewRodin";
     font-size: 15px;
-    color: #DCDCDC;
+}
+
+#stats-display span {
+    float: right;
 }
 
 #skill-palette {
