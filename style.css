@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "NewRodin";
+    src: url("fonts/NewRodin_Pro_M.otf");
+}
+
 .hidden {
     display: none;
 }
@@ -57,6 +62,27 @@
 
 .skill-node.selected {
     background-color: #777777;
+}
+
+#stats-display {
+    height: 204px;
+    width: 247px;
+    padding-top: 47px;
+    padding-bottom: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("images/assets/Stats Display.png");
+}
+
+.stat {
+    height: 15px;
+    line-height: 15px;
+    text-align: right;
+    margin-right: 18px;
+    font-family: "NewRodin";
+    font-size: 15px;
+    color: #DCDCDC;
 }
 
 #skill-palette {
