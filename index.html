@@ -21,12 +21,9 @@
     <script type="text/javascript" src="js/sim.js"></script>
 </head>
 <body onload="simulator = new Simulator();">
-    <div id="stats">
+    <div>
         <table>
             <tbody>
-                <tr>
-                    <th colspan="8">Base Stats</th>
-                </tr>
                 <tr>
                     <th colspan="4">Class: <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select></th>
                     <th colspan="4">Level: <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select></th>
