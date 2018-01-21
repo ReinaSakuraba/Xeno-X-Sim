@@ -26,6 +26,11 @@
     user-select: none;
 }
 
+body {
+    background-color: #272727;
+    color: #FFFFFF;
+}
+
 #skill-layer {
     background-color: #FFFFFF;
     width: 70%;
