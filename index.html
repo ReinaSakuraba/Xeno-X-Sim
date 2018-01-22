@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Xenoblade Chronicles X Build Simulator</title>
-    <meta property="og:title" content="Xenoblade Chronicles X Build Simulator">
-    <meta property="og:description" content="Simulate a build for Xenoblade Chronicles X">
-    <meta property="og:site_name" content="GitHub">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://reinasakuraba.github.io/Xeno-X-Sim/">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/reinasakuraba">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <script type="text/javascript" src="js/classes.js"></script>
-    <script type="text/javascript" src="js/stats.js"></script>
-    <script type="text/javascript" src="js/skills.js"></script>
-    <script type="text/javascript" src="js/arts.js"></script>
-    <script type="text/javascript" src="js/weapons.js"></script>
-    <script type="text/javascript" src="js/sim.js"></script>
+  <meta charset="utf-8">
+  <title>Xenoblade Chronicles X Build Simulator</title>
+  <meta property="og:title" content="Xenoblade Chronicles X Build Simulator">
+  <meta property="og:description" content="Simulate a build for Xenoblade Chronicles X">
+  <meta property="og:site_name" content="GitHub">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://reinasakuraba.github.io/Xeno-X-Sim/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/reinasakuraba">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <script type="text/javascript" src="js/classes.js"></script>
+  <script type="text/javascript" src="js/stats.js"></script>
+  <script type="text/javascript" src="js/skills.js"></script>
+  <script type="text/javascript" src="js/arts.js"></script>
+  <script type="text/javascript" src="js/weapons.js"></script>
+  <script type="text/javascript" src="js/sim.js"></script>
 </head>
 <body onload="simulator = new Simulator();">
-    <div>
-        <table>
-            <tbody>
-                <tr>
-                    <th colspan="4">Class: <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select></th>
-                    <th colspan="4">Level: <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select></th>
-                </tr>
-            </tbody>
-        </table>
+  <div>
+    <table>
+      <tbody>
+        <tr>
+          <th colspan="4">Class: <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select></th>
+          <th colspan="4">Level: <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="stats-display" class="no-highlight">
+    <p>Stats</p>
+    <p>HP<span id="stat-hp">N/A</span></p>
+    <p>TP<span id="stat-tp">N/A</span></p>
+    <p>Melee Attack<span id="stat-matk">N/A</span></p>
+    <p>Ranged Attack<span id="stat-ratk">N/A</span></p>
+    <p>Potential<span id="stat-pot">N/A</span></p>
+    <p>Melee Accuracy<span id="stat-macc">N/A</span></p>
+    <p>Ranged Accuracy<span id="stat-racc">N/A</span></p>
+    <p>Evasion<span id="stat-eva">N/A</span></p>
+  </div>
+  <div id="skill-palette">
+    <div class="skill-palette-icon"></div>
+    <div class="skill-palette-icon"></div>
+    <div class="skill-palette-icon"></div>
+    <div class="skill-palette-icon"></div>
+    <div class="skill-palette-icon"></div>
+  </div>
+  <input type="submit" id="edit-skills" value="Edit Skills">
+  Melee Weapon:
+  <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
+    <option value="longsword">Longsword</option>
+    <option value="shield">Shield</option>
+    <option value="dualSwords">Dual Swords</option>
+    <option value="javelin">Javelin</option>
+    <option value="knife">Knife</option>
+    <option value="photonSaber">Photon Saber</option>
+  </select>
+  Ranged Weapon:
+  <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;">
+    <option value="assaultRifle">Assault Rifle</option>
+    <option value="gatlingGun">Gatling Gun</option>
+    <option value="dualGuns">Dual Guns</option>
+    <option value="sniperRifle">Sniper Rifle</option>
+    <option value="raygun">Raygun</option>
+    <option value="psychoLaunchers">Psycho Launchers</option>
+    <option value="multigun">Multigun</option>
+  </select>
+  <div id="skill-layer" class="hidden">
+    <input type="text" id="skill-search" oninput="simulator.searchSkill(this.value);" placeholder="Search...">
+    <div id="skill-selector">
+      <!-- Skills are appended here by sim.js -->
     </div>
-    <div id="stats-display" class="no-highlight">
-        <p>Stats</p>
-        <p>HP<span id="stat-hp">N/A</span></p>
-        <p>TP<span id="stat-tp">N/A</span></p>
-        <p>Melee Attack<span id="stat-matk">N/A</span></p>
-        <p>Ranged Attack<span id="stat-ratk">N/A</span></p>
-        <p>Potential<span id="stat-pot">N/A</span></p>
-        <p>Melee Accuracy<span id="stat-macc">N/A</span></p>
-        <p>Ranged Accuracy<span id="stat-racc">N/A</span></p>
-        <p>Evasion<span id="stat-eva">N/A</span></p>
-    </div>
-    <div id="skill-palette">
-        <div class="skill-palette-icon"></div>
-        <div class="skill-palette-icon"></div>
-        <div class="skill-palette-icon"></div>
-        <div class="skill-palette-icon"></div>
-        <div class="skill-palette-icon"></div>
-    </div>
-    <input type="submit" id="edit-skills" value="Edit Skills">
-    Melee Weapon:
-    <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
-        <option value="longsword">Longsword</option>
-        <option value="shield">Shield</option>
-        <option value="dualSwords">Dual Swords</option>
-        <option value="javelin">Javelin</option>
-        <option value="knife">Knife</option>
-        <option value="photonSaber">Photon Saber</option>
-    </select>
-    Ranged Weapon:
-    <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;">
-        <option value="assaultRifle">Assault Rifle</option>
-        <option value="gatlingGun">Gatling Gun</option>
-        <option value="dualGuns">Dual Guns</option>
-        <option value="sniperRifle">Sniper Rifle</option>
-        <option value="raygun">Raygun</option>
-        <option value="psychoLaunchers">Psycho Launchers</option>
-        <option value="multigun">Multigun</option>
-    </select>
-    <div id="skill-layer" class="hidden">
-        <input type="text" id="skill-search" oninput="simulator.searchSkill(this.value);" placeholder="Search...">
-        <div id="skill-selector">
-            <!-- Skills are appended here by sim.js -->
-        </div>
-    </div>
+  </div>
 </body>
 </html>
