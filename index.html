@@ -22,8 +22,10 @@
 </head>
 <body onload="simulator = new Simulator();">
   <div>
-    Class: <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select>
-    Level: <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select>
+    <label for="class-selector">Class:</label>
+    <select id="class-selector" onchange="simulator.currentClass = this.value;"><option value="None">None</option></select>
+    <label for="level-selector">Level:</label>
+    <select id="level-selector" onchange="simulator.currentLevel = this.value;"><option value="None">None</option></select>
   </div>
   <div id="stats-display" class="no-highlight">
     <p>Stats</p>
@@ -44,7 +46,7 @@
     <div class="skill-palette-icon"></div>
   </div>
   <input type="submit" id="edit-skills" value="Edit Skills">
-  Melee Weapon:
+  <label for="melee-weapon-selector">Melee Weapon:</label>
   <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
     <option value="longsword">Longsword</option>
     <option value="shield">Shield</option>
@@ -53,7 +55,7 @@
     <option value="knife">Knife</option>
     <option value="photonSaber">Photon Saber</option>
   </select>
-  Ranged Weapon:
+  <label for="ranged-weapon-selector">Ranged Weapon:</label>
   <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;">
     <option value="assaultRifle">Assault Rifle</option>
     <option value="gatlingGun">Gatling Gun</option>
