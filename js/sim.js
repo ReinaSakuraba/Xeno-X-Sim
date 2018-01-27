@@ -34,15 +34,7 @@ class Simulator {
         this.currentSkills = new Set();
         this.skillLevels = new Map();
 
-        $("#class-selector").html("");
         $("#level-selector").html("");
-
-        for (let [className, classData] of Object.entries(classes)) {
-            if (className == "elma") {
-                $("#class-selector").append("<option disabled>&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</option>");
-            }
-            $("#class-selector").append(`<option value="${className}">${classData.name}</option>`);
-        }
 
         for (let skill in skills) {
             this.skillLevels.set(skill, 1);
