@@ -34,14 +34,19 @@ class Simulator {
         this.currentSkills = new Set();
         this.skillLevels = new Map();
 
-        $("#level-selector").html("");
+        let levelSelect = document.getElementById("level-selector");
+
+        while (levelSelect.lastChild) {levelSelect.removeChild(levelSelect.lastChild)};
 
         for (let skill in skills) {
             this.skillLevels.set(skill, 1);
         }
 
         for (let i of range(60)) {
-            $("#level-selector").append(`<option value"${i}">${i}</option>`);
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            levelSelect.appendChild(option);
         }
 
         this.currentClass = "drifter";
