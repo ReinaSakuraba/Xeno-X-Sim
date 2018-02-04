@@ -13,6 +13,8 @@ function range(start, stop, step=1) {
 }
 
 $(function() {
+    simulator = new Simulator();
+
   $("#edit-skills").click(function() {
     $("#skill-layer").removeClass("hidden");
     $("body").append(`<div class="mask"></div>`);
