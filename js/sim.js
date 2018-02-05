@@ -58,7 +58,7 @@ class Simulator {
   }
   set currentClass(value) {
     this._currentClass = value;
-    $("#class-selector").val(value);
+    document.getElementById("class-selector").value = value;
     this.setSkills();
     this.updateStats();
   }
@@ -68,7 +68,7 @@ class Simulator {
   }
   set currentLevel(value) {
     this._currentLevel = value;
-    $("#level-selector").val(value);
+    document.getElementById("level-selector").value = value;
     this.updateStats();
   }
 
@@ -77,7 +77,7 @@ class Simulator {
   }
   set currentMeleeWeapon(value) {
     this._currentMeleeWeapon = value;
-    $("#melee-weapon-selector").val(value);
+    document.getElementById("melee-weapon-selector").value = value;
   }
 
   get currentRangedWeapon() {
@@ -85,7 +85,7 @@ class Simulator {
   }
   set currentRangedWeapon(value) {
     this._currentRangedWeapon = value;
-    $("#ranged-weapon-selector").val(value);
+    document.getElementById("ranged-weapon-selector").value = value;
   }
 
   updateStats() {
