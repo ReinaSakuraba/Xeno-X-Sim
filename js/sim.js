@@ -122,7 +122,7 @@ class Simulator {
       });
 
       let finalStats = Math.floor(classBase + skillBonus);
-      $(`#stat-${statData.short}`).html(finalStats);
+      document.getElementById(`stat-${statData.short}`).innerText = finalStats;
     }
   }
 
