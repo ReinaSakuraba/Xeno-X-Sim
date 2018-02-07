@@ -12,19 +12,28 @@ function range(start, stop, step=1) {
   return result;
 }
 
-$(function() {
+document.addEventListener("DOMContentLoaded", function() {
   simulator = new Simulator();
 
-  $("#edit-skills").click(function() {
-    $("#skill-layer").removeClass("hidden");
-    $("body").append(`<div class="mask"></div>`);
+  document.getElementById("edit-skills").addEventListener("click", function() {
+    let mask = document.createElement("div");
+    mask.classList.add("mask");
 
-    $(".mask").click(function() {
-      $("#skill-layer").addClass("hidden");
-      $(".mask").remove();
-      $(".skill-node").removeClass("hidden");
-      $("#skill-search").val("");
-    });
+    let skillLayer = document.getElementById("skill-layer");
+    skillLayer.classList.remove("hidden");
+    document.body.appendChild(mask);
+
+	mask.addEventListener("click", function() {
+      skillLayer.classList.add("hidden");
+
+      let skillNodes = document.getElementsByClassName("skill-node");
+      for (let node of skillNodes) {
+        node.classList.remove("hidden");
+      }
+
+      document.getElementById("skill-search").value = "";
+      document.body.removeChild(mask);
+	});
   });
 });
 
