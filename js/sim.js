@@ -13,7 +13,7 @@ function range(start, stop, step=1) {
 }
 
 $(function() {
-    simulator = new Simulator();
+  simulator = new Simulator();
 
   $("#edit-skills").click(function() {
     $("#skill-layer").removeClass("hidden");
