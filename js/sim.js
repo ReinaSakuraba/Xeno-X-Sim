@@ -15,25 +15,26 @@ function range(start, stop, step=1) {
 document.addEventListener("DOMContentLoaded", function() {
   simulator = new Simulator();
 
-  document.getElementById("edit-skills").addEventListener("click", function() {
-    let mask = document.createElement("div");
-    mask.classList.add("mask");
+  let mask = document.createElement("div");
+  let skillLayer = document.getElementById("skill-layer");
+  let editSkills = document.getElementById("edit-skills");
+  mask.classList.add("mask");
 
-    let skillLayer = document.getElementById("skill-layer");
+  editSkills.addEventListener("click", function() {
     skillLayer.classList.remove("hidden");
     document.body.appendChild(mask);
+  });
 
-	mask.addEventListener("click", function() {
-      skillLayer.classList.add("hidden");
+  mask.addEventListener("click", function() {
+    skillLayer.classList.add("hidden");
 
-      let skillNodes = document.getElementsByClassName("skill-node");
-      for (let node of skillNodes) {
-        node.classList.remove("hidden");
-      }
+    let skillNodes = document.getElementsByClassName("skill-node");
+    for (let node of skillNodes) {
+      node.classList.remove("hidden");
+    }
 
-      document.getElementById("skill-search").value = "";
-      document.body.removeChild(mask);
-	});
+    document.getElementById("skill-search").value = "";
+    document.body.removeChild(mask);
   });
 });
 
