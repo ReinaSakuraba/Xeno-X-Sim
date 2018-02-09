@@ -200,11 +200,15 @@ class Simulator {
 
   searchSkill(query) {
     let regex = new RegExp(query, "i");
-    $(".skill-node").addClass("hidden");
+
+    let skillNodes = document.getElementsByClassName("skill-node");
+    for (let node of skillNodes) {
+      node.classList.add("hidden");
+    }
 
     for (let [key, value] of Object.entries(skills)) {
       if (value.name.search(regex) != -1) {
-        $(`#${key}`).removeClass("hidden");
+        document.getElementById(key).classList.remove("hidden");
       }
     }
   }
