@@ -62,11 +62,13 @@
         <option value="boze">Boze</option>
       </optgroup>
     </select>
+
     <label for="level-selector">Level:</label>
     <select id="level-selector" onchange="simulator.currentLevel = this.value;">
       <option value="0">0</option>
     </select>
   </div>
+
   <div id="stats-display" class="no-highlight">
     <p>Stats</p>
     <p>HP<span id="stat-hp">0</span></p>
@@ -78,6 +80,7 @@
     <p>Ranged Accuracy<span id="stat-racc">0</span></p>
     <p>Evasion<span id="stat-eva">0</span></p>
   </div>
+
   <div id="skill-palette">
     <div class="skill-palette-icon"></div>
     <div class="skill-palette-icon"></div>
@@ -85,7 +88,9 @@
     <div class="skill-palette-icon"></div>
     <div class="skill-palette-icon"></div>
   </div>
+
   <input type="submit" id="edit-skills" value="Edit Skills">
+
   <label for="melee-weapon-selector">Melee Weapon:</label>
   <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
     <option value="longsword">Longsword</option>
@@ -95,6 +100,7 @@
     <option value="knife">Knife</option>
     <option value="photonSaber">Photon Saber</option>
   </select>
+
   <label for="ranged-weapon-selector">Ranged Weapon:</label>
   <select id="ranged-weapon-selector" onchange="simulator.currentRangedWeapon = this.value;">
     <option value="assaultRifle">Assault Rifle</option>
@@ -105,11 +111,13 @@
     <option value="psychoLaunchers">Psycho Launchers</option>
     <option value="multigun">Multigun</option>
   </select>
+
   <div id="skill-layer" class="hidden">
     <input type="text" id="skill-search" oninput="simulator.searchSkill(this.value);" placeholder="Search...">
     <div id="skill-selector">
       <!-- Skills are appended here by sim.js -->
     </div>
   </div>
+
 </body>
 </html>
