@@ -36,6 +36,17 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("skill-search").value = "";
     document.body.removeChild(mask);
   });
+
+  document.addEventListener("click", function(event) {
+    let target = event.target;
+    if (target.tagName == "IMG") {
+      target = target.parentElement;
+    }
+
+    if (target.classList.contains("skill-node")) {
+      simulator.changeSkill(target.id);
+    }
+  });
 });
 
 class Simulator {
@@ -138,25 +149,34 @@ class Simulator {
 
   setSkills() {
     let validSkills = classes[this.currentClass].skills || skills;
-    $("#skill-selector").html("");
-    $(".skill-palette-icon").css("background-image", "");
+    let skillSelector = document.getElementById("skill-selector");
+    let skillIcons = document.getElementsByClassName("skill-palette-icon");
+
+    while (skillSelector.lastChild) {skillSelector.removeChild(skillSelector.lastChild)};
     this.currentSkills.clear();
 
+    for (let node of skillIcons) {
+      node.style.backgroundImage = "";
+    }
+
     for (let skill in validSkills) {
-      $('#skill-selector').append(`
-        <div class="skill-node no-highlight" id="${skill}">
-          <img src="images/skills/${skills[skill].name}.png">
-          ${skills[skill].name}
-        </div>
-      `);
+      let node = document.createElement("div");
+      node.id = skill;
+      node.classList.add("skill-node");
+      node.classList.add("no-highlight");
+
+      let img = document.createElement("img");
+      img.src = `images/skills/${skills[skill].name}.png`;
+      node.appendChild(img);
+
+      let text = document.createTextNode(skills[skill].name);
+      node.appendChild(text);
+
+      skillSelector.appendChild(node);
     }
 
     let skillSlots = classes[this.currentClass].skillSlots;
-    $("#skill-palette").css("background-position", `0px ${(skillSlots - 1) * -74}px`);
-
-    $(".skill-node").click(function() {
-      simulator.changeSkill($(this).attr("id"));
-    });
+    document.getElementById("skill-palette").style.backgroundPosition = `0px ${(skillSlots - 1) * -74}px`;
   }
 
   changeSkill(skillName) {
