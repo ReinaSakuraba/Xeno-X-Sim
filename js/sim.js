@@ -189,18 +189,6 @@ class Simulator {
     this.updateStats();
   }
 
-  changeSkillLevel(skillName, skillLevel) {
-    if (skillLevel > 5 || skillLevel < 1) return;
-
-    let skillLevelNodes = $(`#selected-skill-${skillName} .skill-level-node`);
-
-    skillLevelNodes.css("background-color", "");
-    skillLevelNodes.slice(0, skillLevel).css("background-color", "#0000FF");
-
-    this.skillLevels.set(skillName, skillLevel);
-    this.updateStats();
-  }
-
   searchSkill(query) {
     let regex = new RegExp(query, "i");
 
