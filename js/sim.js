@@ -160,26 +160,29 @@ class Simulator {
   }
 
   changeSkill(skillName) {
-    let node = $(`#${skillName}`)
+    let node = document.getElementById(skillName);
 
     if (this.currentSkills.has(skillName)) {
-      node.removeClass("selected");
+      node.classList.remove("selected");
       this.currentSkills.delete(skillName);
     } else if (this.currentClass == "striker") {
-      $(".selected").removeClass("selected");
+      document.querySelector(".selected").classlist.remove("selected");
       this.currentSkills.clear();
-      node.addClass("selected");
+      node.classList.add("selected");
       this.currentSkills.add(skillName);
     } else if (this.currentSkills.size < classes[this.currentClass].skillSlots) {
-      node.addClass("selected");
+      node.classList.add("selected");
       this.currentSkills.add(skillName);
     }
 
-    $(".skill-palette-icon").css("background-image", "");
+    let skillIcons = document.getElementsByClassName("skill-palette-icon");
+    for (let node of skillIcons) {
+      node.style.backgroundImage = "";
+    }
 
     let i = 0;
     this.currentSkills.forEach(key => {
-      $(`.skill-palette-icon:eq(${i})`).css("background-image", `url("images/skills/${skills[key].name}.png")`);
+      skillIcons[i].style.backgroundImage = `url("images/skills/${skills[key].name}.png")`;
       i += 1
     });
 
