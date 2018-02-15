@@ -87,8 +87,8 @@ var classes = {
     evasion: 1.05,
     potential: 0.9
   },
-  psycorrupter: {
-    name: "Psycorrupter",
+  psycorruptor: {
+    name: "Psycorruptor",
     skillSlots: 3,
     hp: 0.8,
     rangedAccuracy: 1.1,
@@ -257,7 +257,7 @@ var classes = {
   },
   irina: {
     name: "Irina",
-    class: "Psycorrupter+",
+    class: "Psycorruptor+"
     skillSlots: 4,
     hp: 0.8,
     rangedAccuracy: 1.1,
@@ -572,7 +572,7 @@ var classes = {
   },
   mia: {
     name: "Mia",
-    class: "Psycorrupter+",
+    class: "Psycorruptor+",
     skillSlots: 3,
     hp: 0.8,
     rangedAccuracy: 1.1,
@@ -610,7 +610,7 @@ var classes = {
   },
   celica: {
     name: "Celica",
-    class: "Psycorrupter+",
+    class: "Psycorruptor+",
     skillSlots: 3,
     hp: 0.8,
     rangedAccuracy: 1.1,
@@ -688,7 +688,7 @@ var classes = {
   },
   hope: {
     name: "Hope",
-    class: "Psycorrupter+",
+    class: "Psycorruptor+",
     skillSlots: 3,
     hp: 0.8,
     rangedAccuracy: 1.0,
