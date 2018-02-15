@@ -257,7 +257,7 @@ var classes = {
   },
   irina: {
     name: "Irina",
-    class: "Psycorruptor+"
+    class: "Psycorruptor+",
     skillSlots: 4,
     hp: 0.8,
     rangedAccuracy: 1.1,
