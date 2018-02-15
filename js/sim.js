@@ -47,6 +47,29 @@ document.addEventListener("DOMContentLoaded", function() {
       simulator.changeSkill(target.id);
     }
   });
+
+  document.getElementById("clipboard").addEventListener("click", function(event) {
+    let textArea = document.createElement("textarea");
+    let text = "";
+    var lpad = function(str, len) {return (new Array(len - str.length + 1).join(" ")) + str;};
+    var rpad = function(str, len) {return str + (new Array(len - str.length + 1).join(" "));};
+
+    text += `Class: ${classes[simulator.currentClass].name}\n`
+    text += `Level: ${simulator.currentLevel}\n`
+    if (simulator.currentSkills.size != 0) {
+      text += `Skills:\n  `
+      text += [...simulator.currentSkills].map(skill => `${skills[skill].name} Lv. ${simulator.skillLevels.get(skill)}`).join('\n  ');
+    }
+
+    textArea.textContent = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand("copy");
+    }
+    catch(e) {}
+    document.body.removeChild(textArea);
+  });
 });
 
 class Simulator {
