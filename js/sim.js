@@ -12,7 +12,7 @@ function range(start, stop, step=1) {
   return result;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   simulator = new Simulator();
 
   let mask = document.createElement("div");
@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", function() {
   let editSkills = document.getElementById("edit-skills");
   mask.classList.add("mask");
 
-  editSkills.addEventListener("click", function() {
+  editSkills.addEventListener("click", () => {
     skillLayer.classList.remove("hidden");
     document.body.appendChild(mask);
   });
 
-  mask.addEventListener("click", function() {
+  mask.addEventListener("click", () => {
     skillLayer.classList.add("hidden");
 
     let skillNodes = document.getElementsByClassName("skill-node");
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.removeChild(mask);
   });
 
-  document.addEventListener("click", function(event) {
+  document.addEventListener("click", (event) => {
     let target = event.target;
     if (target.tagName == "IMG") {
       target = target.parentElement;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  document.getElementById("clipboard").addEventListener("click", function(event) {
+  document.getElementById("clipboard").addEventListener("click", () => {
     let textArea = document.createElement("textarea");
     let text = "";
 
