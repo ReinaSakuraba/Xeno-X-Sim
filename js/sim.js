@@ -51,8 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("clipboard").addEventListener("click", function(event) {
     let textArea = document.createElement("textarea");
     let text = "";
-    var lpad = function(str, len) {return (new Array(len - str.length + 1).join(" ")) + str;};
-    var rpad = function(str, len) {return str + (new Array(len - str.length + 1).join(" "));};
 
     text += `Class: ${classes[simulator.currentClass].name}\n`
     text += `Level: ${simulator.currentLevel}\n`
