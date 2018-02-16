@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("click", (event) => {
     let target = event.target;
-    if (target.tagName == "IMG") {
+    if (["IMG", "P"].includes(target.tagName)) {
       target = target.parentElement;
     }
 
