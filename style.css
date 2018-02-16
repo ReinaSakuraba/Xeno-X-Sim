@@ -79,7 +79,7 @@ body {
   background-image: url("images/assets/SkillBorders.png");
 }
 
-.skill-node.unselected img {background-position: 0px -46px;}
+.skill-node.selectable img {background-position: 0px -46px;}
 .skill-node.selected img {background-position: 0px -92px;}
 .skill-node.unselectedable img {background-position: 0px 0px;}
 

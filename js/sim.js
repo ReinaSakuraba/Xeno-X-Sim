@@ -163,6 +163,7 @@ class Simulator {
       node.id = skill;
       node.classList.add("skill-node");
       node.classList.add("no-highlight");
+      node.classList.add("selectable");
 
       let img = document.createElement("img");
       img.src = `images/skills/${skills[skill].name}.png`;
@@ -183,15 +184,32 @@ class Simulator {
 
     if (this.currentSkills.has(skillName)) {
       node.classList.remove("selected");
+      node.classList.add("selectable");
       this.currentSkills.delete(skillName);
     } else if (this.currentClass == "striker") {
       document.querySelector(".selected").classlist.remove("selected");
       this.currentSkills.clear();
       node.classList.add("selected");
+      node.classList.remove("selectable");
       this.currentSkills.add(skillName);
     } else if (this.currentSkills.size < classes[this.currentClass].skillSlots) {
       node.classList.add("selected");
+      node.classList.remove("selectable");
       this.currentSkills.add(skillName);
+    }
+
+    if (this.currentSkills.size == classes[this.currentClass].skillSlots) {
+      let nodes = document.querySelectorAll(".skill-node:not(.selected)");
+      for (let node of nodes) {
+        node.classList.remove("selectable");
+        node.classList.add("unselectable");
+      }
+    } else {
+      let nodes = document.querySelectorAll(".skill-node.unselectable");
+      for (let node of nodes) {
+        node.classList.add("selectable");
+        node.classList.remove("unselectable");
+      }
     }
 
     let skillIcons = document.getElementsByClassName("skill-palette-icon");
