@@ -64,7 +64,7 @@ class Simulator {
     }
 
     for (let skill in skills) {
-      this.skillLevels.set(skill, 1);
+      this.skillLevels.set(skill, 5);
     }
 
     this.currentClass = "drifter";
