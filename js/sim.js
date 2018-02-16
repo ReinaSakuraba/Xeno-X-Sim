@@ -26,26 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  document.getElementById("clipboard").addEventListener("click", () => {
-    let textArea = document.createElement("textarea");
-    let text = "";
-
-    text += `Class: ${classes[simulator.currentClass].name}\n`
-    text += `Level: ${simulator.currentLevel}\n`
-    if (simulator.currentSkills.size != 0) {
-      text += `Skills:\n  `
-      text += [...simulator.currentSkills].map(skill => `${skills[skill].name} Lv. ${simulator.skillLevels.get(skill)}`).join('\n  ');
-    }
-
-    textArea.textContent = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
-      document.execCommand("copy");
-    }
-    catch(e) {}
-    document.body.removeChild(textArea);
-  });
+  document.getElementById("clipboard").addEventListener("click", () => simulator.copyToClipboard());
 });
 
 class Simulator {
@@ -240,5 +221,26 @@ class Simulator {
         document.getElementById(key).classList.remove("hidden");
       }
     }
+  }
+
+  copyToClipboard() {
+    let textArea = document.createElement("textarea");
+    let text = "";
+
+    text += `Class: ${classes[this.currentClass].name}\n`
+    text += `Level: ${this.currentLevel}\n`
+    if (this.currentSkills.size != 0) {
+      text += `Skills:\n  `
+      text += [...this.currentSkills].map(skill => `${skills[skill].name} Lv. ${this.skillLevels.get(skill)}`).join('\n  ');
+    }
+
+    textArea.textContent = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand("copy");
+    }
+    catch(e) {}
+    document.body.removeChild(textArea);
   }
 }
