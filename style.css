@@ -72,6 +72,10 @@ body {
   content: "";
 }
 
+.skill-node:last-child:after {
+  content: none;
+}
+
 .skill-node img{
   height: 40px;
   width: 40px;
