@@ -81,12 +81,31 @@ body {
   height: 40px;
   width: 40px;
   padding: 3px;
+  float: left;
   background-image: url("images/assets/SkillBorders.png");
 }
 
 .skill-node.selectable img {background-position: 0px -46px;}
 .skill-node.selected img {background-position: 0px -92px;}
 .skill-node.unselectedable img {background-position: 0px 0px;}
+
+.skill-node p {
+  display: inline-block;
+  color: #DCDCDC;
+  margin: 0px 5px 0px 5px;
+}
+
+.skill-node p:first-of-type {
+  height: 46px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 46px;
+}
+
+.skill-node p:last-child {
+  margin-top: 10px;
+  font-size: 12px;
+}
 
 #stats-display {
   height: 272px;

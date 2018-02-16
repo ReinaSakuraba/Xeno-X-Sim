@@ -150,8 +150,13 @@ class Simulator {
       img.src = `images/skills/${skills[skill].name}.png`;
       node.appendChild(img);
 
-      let text = document.createTextNode(skills[skill].name);
-      node.appendChild(text);
+      let p = document.createElement("p");
+      p.textContent = skills[skill].name;
+      node.appendChild(p);
+
+      let pDesc = document.createElement("p");
+      pDesc.textContent = skills[skill].effect;
+      node.appendChild(pDesc);
 
       skillSelector.appendChild(node);
     }
