@@ -15,28 +15,6 @@ function range(start, stop, step=1) {
 document.addEventListener("DOMContentLoaded", () => {
   simulator = new Simulator();
 
-  let mask = document.createElement("div");
-  let skillLayer = document.getElementById("skill-layer");
-  let editSkills = document.getElementById("edit-skills");
-  mask.classList.add("mask");
-
-  editSkills.addEventListener("click", () => {
-    skillLayer.classList.remove("hidden");
-    document.body.appendChild(mask);
-  });
-
-  mask.addEventListener("click", () => {
-    skillLayer.classList.add("hidden");
-
-    let skillNodes = document.getElementsByClassName("skill-node");
-    for (let node of skillNodes) {
-      node.classList.remove("hidden");
-    }
-
-    document.getElementById("skill-search").value = "";
-    document.body.removeChild(mask);
-  });
-
   document.addEventListener("click", (event) => {
     let target = event.target;
     if (target.tagName == "IMG") {
@@ -181,7 +159,7 @@ class Simulator {
     }
 
     for (let skill in validSkills) {
-      let node = document.createElement("div");
+      let node = document.createElement("li");
       node.id = skill;
       node.classList.add("skill-node");
       node.classList.add("no-highlight");

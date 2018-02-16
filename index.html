@@ -89,8 +89,6 @@
     <div class="skill-palette-icon"></div>
   </div>
 
-  <input type="submit" id="edit-skills" value="Edit Skills">
-
   <label for="melee-weapon-selector">Melee Weapon:</label>
   <select id="melee-weapon-selector" onchange="simulator.currentMeleeWeapon = this.value;">
     <option value="longsword">Longsword</option>
@@ -112,11 +110,11 @@
     <option value="multigun">Multigun</option>
   </select>
 
-  <div id="skill-layer" class="hidden">
+  <div id="skill-layer">
     <input type="text" id="skill-search" oninput="simulator.searchSkill(this.value);" placeholder="Search...">
-    <div id="skill-selector">
+    <ul id="skill-selector">
       <!-- Skills are appended here by sim.js -->
-    </div>
+    </ul>
   </div>
 
 </body>
