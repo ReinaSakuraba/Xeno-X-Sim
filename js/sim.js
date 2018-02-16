@@ -135,6 +135,8 @@ class Simulator {
     while (skillSelector.lastChild) {skillSelector.removeChild(skillSelector.lastChild)};
     this.currentSkills.clear();
 
+    document.getElementById("skill-search").value = "";
+
     for (let node of skillIcons) {
       node.style.backgroundImage = "";
     }
