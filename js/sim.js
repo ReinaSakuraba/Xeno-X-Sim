@@ -187,7 +187,8 @@ class Simulator {
       node.classList.add("selectable");
       this.currentSkills.delete(skillName);
     } else if (this.currentClass == "striker") {
-      document.querySelector(".selected").classlist.remove("selected");
+      let selected = document.querySelector(".selected");
+      if (selected) selected.classList.remove("selected");
       this.currentSkills.clear();
       node.classList.add("selected");
       node.classList.remove("selectable");
