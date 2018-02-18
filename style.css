@@ -64,7 +64,7 @@ body {
   content: "";
 }
 
-.skill-node:last-child:after {
+.skill-node:last-of-type:after {
   content: none;
 }
 
