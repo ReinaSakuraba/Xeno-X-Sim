@@ -42,21 +42,12 @@ body {
 }
 
 #skill-selector {
+  position: relative;
   height: 388.1px;
   width: 306px;
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow-y: scroll;
-}
-
-#skill-selector::-webkit-scrollbar {
-  width: 5px;
-  background-color: #204C4F;
-}
-
-#skill-selector::-webkit-scrollbar-thumb {
-  background-color: #8DD0E6;
 }
 
 .skill-node {
@@ -152,4 +143,39 @@ body {
   width: 40px;
   margin: 23px 5px 0px 5px;
   background-size: contain;
+}
+
+.ps {
+  overflow: hidden !important;
+  overflow-anchor: none;
+  -ms-overflow-style: none;
+  touch-action: auto;
+  -ms-touch-action: auto;
+}
+
+.ps__rail-y {
+  background-color: #204C4F;
+  border-radius: 6px;
+  width: 5px;
+  right: 0;
+  position: absolute;
+}
+
+.ps__thumb-y {
+  background-color: #8DD0E6;
+  border-radius: 6px;
+  width: 4px;
+  position: absolute;
+}
+
+@supports (-ms-overflow-style: none) {
+  .ps {
+    overflow: auto !important;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ps {
+    overflow: auto !important;
+  }
 }

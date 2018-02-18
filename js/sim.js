@@ -13,6 +13,7 @@ function range(start, stop, step=1) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  ps = new PerfectScrollbar('#skill-selector');
   simulator = new Simulator();
 
   document.addEventListener("click", (event) => {
@@ -165,6 +166,7 @@ class Simulator {
 
     let skillSlots = classes[this.currentClass].skillSlots;
     document.getElementById("skill-palette").style.backgroundPosition = `0px ${(skillSlots - 1) * -74}px`;
+    ps.update();
   }
 
   changeSkill(skillName) {
@@ -228,6 +230,7 @@ class Simulator {
         document.getElementById(key).classList.remove("hidden");
       }
     }
+    ps.update();
   }
 
   copyToClipboard() {
