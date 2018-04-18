@@ -92,7 +92,7 @@ class Simulator {
 
   updateStats() {
     for (let [stat, statData] of Object.entries(stats)) {
-      let statBase = Math.floor(statData.multiplier * this.currentLevel + statData.base);
+      let statBase = Math.floor((((statData[99] - statData[1]) / (99 - 1)) * (this.currentLevel - 1)) + statData[1]);
       let classBase = Math.floor((classes[this.currentClass][stat] || 1) * statBase);
       let skillBonus = 0;
 

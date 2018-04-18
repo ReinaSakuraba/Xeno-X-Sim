@@ -1,42 +1,42 @@
 var stats = {
   hp: {
-    base: 150.52,
-    multiplier: 99.48,
+    1: 250,
+    99: 10000,
     short: "hp"
   },
   tp: {
-    base: 3000,
-    multiplier: 0,
+    1: 3000,
+    99: 3000,
     short: "tp"
   },
   rangedAccuracy: {
-    base: 103.407,
-    multiplier: 2.593,
+    1: 105,
+    99: 360,
     short: "racc"
   },
   meleeAccuracy: {
-    base: 101.28,
-    multiplier: 2.72,
+    1: 104,
+    99: 370,
     short: "macc"
   },
   rangedAttack: {
-    base: 13.33,
-    multiplier: 0.67,
+    1: 14,
+    99: 80,
     short: "ratk"
   },
   meleeAttack: {
-    base: 17.01,
-    multiplier: 1.035,
+    1: 18,
+    99: 120,
     short: "matk"
   },
   evasion: {
-    base: 8.265,
-    multiplier: 1.735,
+    1: 10,
+    99: 180,
     short: "eva"
   },
   potential: {
-    base: 9.08,
-    multiplier: 0.92,
+    1: 10,
+    99: 100,
     short: "pot"
   }
 };
